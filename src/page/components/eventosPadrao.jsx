@@ -4,7 +4,7 @@ const eventosPadrao = [{
         start: new Date(2025,8,5,10,0),
         end: new Date(2025,8,8,20,0),
         desc: 'Nossa primeira programação',
-        color: 'red',
+        color: 'blue',
         tipo: 'programacao',
         local: 'salão  da igreja'
     },{
@@ -13,10 +13,20 @@ const eventosPadrao = [{
         start: new Date(2025,9,4,10,0),
         end: new Date(2025,9,5,20,0),
         desc: 'Nossa segunda programação',
-        color: 'blue',
+        color: 'red',
         tipo: 'programacao',
         local: 'quadra da igreja'
     },
+    {
+        id: 3,
+        title: 'Programação 3',
+        start: new Date(2025,9,4,10,0),
+        end: new Date(2025,9,5,20,0),
+        desc: 'Nossa segunda programação',
+        color: 'green',
+        tipo: 'programacao',
+        local: 'quadra da igreja'
+    }
  ]
 
  export default eventosPadrao;
