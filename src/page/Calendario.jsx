@@ -67,19 +67,57 @@ function Calendario() {
                     onEventDrop={moverEventos}
                     onEventResize={moverEventos}
                     onSelectEvent={handleEventClick} //chama a funçaõ de abrir evento ao dar duplo clique nele}
-                    eventPropGeter={eventStyle} //chama a const que altera a cor dos eventos
+                    eventPropGetter={eventStyle} //chama a const que altera a cor dos eventos
+                    components={{//reescrever o toolbar
+                        toolbar: CustomTollbar,
+                    }}
                     className="calendar" //nome que chama no css o calendario
                 />
             </div>
 
             {eventoSelecionado && (
-                <EventModal
-                    evento={eventoSelecionado}
-                    onCLose={handleEventClose}
-                />
+                <EventModal evento={eventoSelecionado} onCLose={handleEventClose}/>
             )}
         </div>
     );
 }
+
+const CustomTollbar = ({label, onView, onNavigate, views}) =>{
+    const handleNavigate = (action) =>{
+        onNavigate(action)
+    };
+    const [itemText, setItemText] = useState('month');
+
+
+    
+
+
+    return(
+        <div className="toolbar-container">
+            <h1 className='mesAno'>{label}</h1>
+
+        <div className="dirtop">
+            <div className="dropdown">
+                <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    {itemText}
+                </button>
+                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    {views.map((view, index)=> (
+                        <div key={index}>
+                            <li>
+                                <button className="dropdown-item" onClick={()=>onView(view)+ setItemText(view)}>{view}</button>
+                            </li>
+                            {index == 2 && <hr className="dropdown-divider"></hr>}
+                        </div>
+                    ))}
+                </ul>
+            </div>
+
+
+        </div>
+        </div>
+
+    )
+} 
 
 export default Calendario;
