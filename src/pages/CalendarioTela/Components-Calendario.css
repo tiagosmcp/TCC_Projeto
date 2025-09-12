@@ -1,6 +1,6 @@
 .tela {
     display: flex;
-    background-color: #262626;
+    background-color: #c0b3b3;
 }
 
 .calendario {
@@ -13,6 +13,26 @@
     width: 20%;
     background-color: #082414;
     border-right: 1px solid #bbb;
+}
+
+/*header modificado*/
+.toolbar-container{
+    display: flex;
+    height: 10vh;
+    align-items: center;
+    padding-left: 50px;
+}
+.mesAno{
+    width: 10%;
+    color:#aaa;
+    justify-content: flex-start;
+}
+.dirtop{
+    width: 50%;
+    justify-content: end;
+    display: flex;
+    align-items: center;
+    padding-right: 50px;
 }
 
 /*modal*/
