@@ -45,17 +45,22 @@ function Calendario() {
     };
     //funcoes de abrir e fechar "detalhes" de um evento
     const handleEventClick = (evento) => {
-        SeteEventoSelecionado(evento);
+        SeteventoSelecionado(evento);
     };
 
     const handleEventClose = () => {
-        SeteEventoSelecionado(null);
+        SeteventoSelecionado(null);
+    };
+
+    //pega a lista, conta quantos elementos tem e adiciona +1 id, depois tem que mudar a logica pra luxar do banco
+    const handleAdicionar = (novoEvento) => {
+        setEventos([...eventos,{...novoEvento, id:eventos.length + 1}]);
     };
 
     return (
         <div className="tela">
             <div className="toolbar p-4">
-                <Adicionar/>
+                <Adicionar onAdicionar={handleAdicionar}/>
             </div>
             
             <div className="calendario">
