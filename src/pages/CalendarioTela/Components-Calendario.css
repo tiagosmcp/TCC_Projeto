@@ -1,6 +1,6 @@
 .tela {
     display: flex;
-    background-color: #c0b3b3;
+    background-color: #e9ecef;
 }
 
 .calendario {
@@ -12,7 +12,7 @@
     height: 100vh;
     width: 20%;
     background-color: #082414;
-    border-right: 1px solid #bbb;
+    border-right: 1px solid #000000;
 }
 
 /*header modificado*/
@@ -21,10 +21,11 @@
     height: 10vh;
     align-items: center;
     padding-left: 50px;
+    margin-top: 10px;
 }
 .mesAno{
     width: 10%;
-    color:#aaa;
+    color:#080808;
     justify-content: flex-start;
 }
 .dirtop{
@@ -80,44 +81,44 @@
 
 /*Corpo*/
 /*Linhas*/
-.rbc-mouth-view {
-    border-color: #eeeeee5f;
+.rbc-month-view {
+    border-color: #080808;
 }
-.rbc-mouth-row + .rbc-mouth-row {
-    border-color: #dddddd73;
+.rbc-month-row + .rbc-month-row {
+    border-color: #080808;
 }
 .rbc-day-bg + .rbc-day-bg {
-    border-color: #dddddd73;
+    border-color: #080808;
 }
 
 /*Mes*/
 .rbc-header {
-    color: #eeeeeeee;
-    border-color: #dddddd73;
+    color: #080808;
+    border-color: #080808;
 }
 .rbc-header + .rbc-header {
     border-top: 0px;
     border-left: 0px;
     border-right: 0px;
-    border-color: #dddddd73;
+    border-color: #080808;
 }
 /*dias fora do range, do mes passado ou futuro*/
 .rbc-off-range-bg {
-    background-color: #313131;
+    background-color: #b9b0b0;
 }
 .rbc-today {
-    background-color: #1a1a1a;
+    background-color: #5f5959;
 }
 .rbc-button-link {
     margin: 5px;
     font-size: 15px;
-    color: #eeeeeec5;
+    color: #080808;
 }
 .rbc-off-range .rbc-button-link{
-    color: #eeeeee37;
+    color: #201d1d;
 }
 .rbc-now .rbc-button-link{
-    background-color:#eeeeeec5;
+    background-color: #080808;
     color: #ffffff;
     border-radius: 3px;
     padding-left: 5px;
@@ -126,11 +127,11 @@
     font-size: 16px;
 }
 .rbc-time-content,.rbc-time-content > .rbc-day-slot,.rbc-timeslot-group, .rbc-time-slot{
-    color: #bbb;
+    color: #080808;
     border-color: #b0b0b036;
 }
 .rbc-day-slot .rbc-time-slot{
-    border-top: 1px solid #c8c8c80a ;
+    border-top: 1px solid #080808 ;
 }
 /*Agenda*/
 .rbc-agenda-content, .rbc-agenda-view{
