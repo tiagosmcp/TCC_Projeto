@@ -19,7 +19,7 @@
 .toolbar-container{
     display: flex;
     height: 10vh;
-    align-items: center;
+   align-items: center;
     padding-left: 50px;
     margin-top: 10px;
 }

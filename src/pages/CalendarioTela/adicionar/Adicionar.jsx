@@ -54,68 +54,70 @@ function Adicionar({onAdicionar}){
     }
 
     return(
-        <div className="adicionar p-3 rounded border border-white" style={{backgroundColor: '#e9ecef'}}>
-            <h3>Adicionar Programação</h3>
-            <Form onSubmit ={handleSubmit}>
-                <Form.Group controlId ="formBasicTitle">
-                    <Form.Label>Nome da Programação</Form.Label>
-                    <Form.Control type="text" placeholder="Digite o nome" name="title" value={novoEvento.title} onChange={handleChange}/>
-                    
-                </Form.Group>
+        <div className="CardAdicionarProg" style={{paddingTop: '20%'}}>
+            <div className="adicionar p-3 rounded border border-white" style={{backgroundColor: '#e9ecef'}}>
+                <h3>Adicionar Programação</h3>
+                <Form onSubmit ={handleSubmit}>
+                    <Form.Group controlId ="formBasicTitle">
+                        <Form.Label>Nome da Programação</Form.Label>
+                        <Form.Control type="text" placeholder="Digite o nome" name="title" value={novoEvento.title} onChange={handleChange}/>
+                        
+                    </Form.Group>
 
-                <Row>
-                    <Col xs={6}>
-                        <Form.Group controlId="formBasicStart">
-                            <Form.Label>Início</Form.Label>
-                            <Form.Control type="datetime-local" name="start" value={novoEvento.start} onChange={handleChange}/>
-                        </Form.Group>
-                    </Col>
-                    <Col xs={6}>
-                        <Form.Group controlId="formBasicEnd">
-                            <Form.Label>Término</Form.Label>
-                            <Form.Control type="datetime-local" name="end" value={novoEvento.end} onChange={handleChange}/>
-                        </Form.Group>
-                    </Col>
-                </Row>
-                <Collapse in={expanded}>
-                    <div>
-                        <div>
-                            <Form.Group controlId='formBasicLocal'>
-                                <Form.Label>Local</Form.Label>
-                                <Form.Control type='text' placeholder='Digite o Local' name='local' value={novoEvento.local} onChange={handleChange}/>
+                    <Row>
+                        <Col xs={6}>
+                            <Form.Group controlId="formBasicStart">
+                                <Form.Label>Início</Form.Label>
+                                <Form.Control type="datetime-local" name="start" value={novoEvento.start} onChange={handleChange}/>
                             </Form.Group>
+                        </Col>
+                        <Col xs={6}>
+                            <Form.Group controlId="formBasicEnd">
+                                <Form.Label>Término</Form.Label>
+                                <Form.Control type="datetime-local" name="end" value={novoEvento.end} onChange={handleChange}/>
+                            </Form.Group>
+                        </Col>
+                    </Row>
+                    <Collapse in={expanded}>
+                        <div>
+                            <div>
+                                <Form.Group controlId='formBasicLocal'>
+                                    <Form.Label>Local</Form.Label>
+                                    <Form.Control type='text' placeholder='Digite o Local' name='local' value={novoEvento.local} onChange={handleChange}/>
+                                </Form.Group>
+                            </div>
+                            <Row>
+                                <Col xs={3}>
+                                    <Form.Group controlId='formBasicColor'>
+                                        <Form.Label>Cor</Form.Label>
+                                        <Form.Control type='color' name='color' value={novoEvento.color} onChange={handleChange}/>
+                                    </Form.Group>    
+                                </Col>
+                                <Col xs={9}>
+                                    <Form.Group controlId='formBasicTipo'>
+                                        <Form.Label>Tipo</Form.Label>
+                                        <Form.Control type='text' placeholder='Digite o tipo' name='tipo' value={novoEvento.tipo} onChange={handleChange}/>
+                                    </Form.Group>    
+                                </Col>
+                            </Row>
                         </div>
-                        <Row>
-                            <Col xs={3}>
-                                <Form.Group controlId='formBasicColor'>
-                                    <Form.Label>Cor</Form.Label>
-                                    <Form.Control type='color' name='color' value={novoEvento.color} onChange={handleChange}/>
-                                </Form.Group>    
-                            </Col>
-                            <Col xs={9}>
-                                <Form.Group controlId='formBasicTipo'>
-                                    <Form.Label>Tipo</Form.Label>
-                                    <Form.Control type='text' placeholder='Digite o tipo' name='tipo' value={novoEvento.tipo} onChange={handleChange}/>
-                                </Form.Group>    
-                            </Col>
-                        </Row>
-                    </div>
-                </Collapse>
-                <Button
-                    variant='primary'
-                    type='button'
-                    onClick={handleToggleExpanded}
-                    style={{marginTop:'10px', float:'right'}}>
-                        {expanded ? <i class="bi bi-chevron-double-up"></i>:<i class="bi bi-chevron-double-down"></i>}
-                </Button>
-                <Button
-                    variant='success'
-                    type='submit'
-                    style={{marginTop:'10px', marginRight: '10px'}}
-                    disabled={!novoEvento.title || !novoEvento.start || !novoEvento.end }>
-                    Salvar
-                </Button>
-            </Form>
+                    </Collapse>
+                    <Button
+                        variant='primary'
+                        type='button'
+                        onClick={handleToggleExpanded}
+                        style={{marginTop:'10px', float:'right'}}>
+                            {expanded ? <i class="bi bi-chevron-double-up"></i>:<i class="bi bi-chevron-double-down"></i>}
+                    </Button>
+                    <Button
+                        variant='success'
+                        type='submit'
+                        style={{marginTop:'10px', marginRight: '10px'}}
+                        disabled={!novoEvento.title || !novoEvento.start || !novoEvento.end }>
+                        Salvar
+                    </Button>
+                </Form>
+            </div>
         </div>
     )
 }
