@@ -1,3 +1,4 @@
+import userEvent from '@testing-library/user-event';
 import React, {useState} from 'react'
 import { Button, Form, Row, Col, Collapse } from 'react-bootstrap'
 
@@ -12,7 +13,7 @@ function Adicionar({onAdicionar}){
         local: '',
     });
     const [expanded, setExpanded] = useState(false);
-
+    
     //funcao que muda a programação
     const handleChange = (e) => {
         const {name, value} = e.target;
@@ -79,9 +80,9 @@ function Adicionar({onAdicionar}){
                 <Collapse in={expanded}>
                     <div>
                         <div>
-                            <Form.Group controlId='formBasicDesc'>
-                                <Form.Label>Descrição</Form.Label>
-                                <Form.Control type='text' placeholder='Digite a Descrição' name='desc' value={novoEvento.desc} onChange={handleChange}/>
+                            <Form.Group controlId='formBasicLocal'>
+                                <Form.Label>Local</Form.Label>
+                                <Form.Control type='text' placeholder='Digite o Local' name='local' value={novoEvento.local} onChange={handleChange}/>
                             </Form.Group>
                         </div>
                         <Row>

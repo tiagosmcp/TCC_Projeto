@@ -6,8 +6,9 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "./Components-Calendario.css";
 import eventosPadrao from "./eventosPadrao";
-import EventModal from "./EventModal";
+import EventModal from "./ModalEvent/EventModal";
 import Adicionar from "./adicionar/Adicionar";
+import CustomTollbar from "./CustomCalendar/CustomTollBar";
 
 const DragAndDropCalendar = withDragAndDrop(Calendar);
 const localizer = momentLocalizer(moment);
@@ -15,7 +16,7 @@ const localizer = momentLocalizer(moment);
 function Calendario() {
     const [eventos, setEventos] = useState(eventosPadrao); //chamando os eventos
     //variavel para abrir uma tela ao clicar em algum evento, inicia com null e ao fechar fica null tambem, quando der dois cliques entra dentro de eventoSelecionado
-    const [eventoSelecionado, SeteEventoSelecionado] = useState(null);
+    const [eventoSelecionado, setEventoSelecionado] = useState(null);
 
     //entra no style de cada evento e seta a cor que ta nele
     const eventStyle = (event) => ({
@@ -45,17 +46,36 @@ function Calendario() {
     };
     //funcoes de abrir e fechar "detalhes" de um evento
     const handleEventClick = (evento) => {
-        SeteventoSelecionado(evento);
+        setEventoSelecionado(evento);
     };
 
     const handleEventClose = () => {
-        SeteventoSelecionado(null);
+        setEventoSelecionado(null);
     };
 
     //pega a lista, conta quantos elementos tem e adiciona +1 id, depois tem que mudar a logica pra luxar do banco
     const handleAdicionar = (novoEvento) => {
         setEventos([...eventos,{...novoEvento, id:eventos.length + 1}]);
     };
+   
+    //alterar quando arrumar o banco
+    const handleEventDelete = (eventId) =>{
+        const updatedEvents = eventos.filter((event) => event.id !== eventId)
+        setEventos(updatedEvents);
+        setEventoSelecionado(null);
+    };
+
+    const handleEventUpdate = (updatedEvent) =>{
+        const updatedEvents = eventos.map((event)=>
+        {
+            if(event.id === updatedEvent.id){
+                return updatedEvent;
+            }
+            return event;
+        });
+        setEventos(updatedEvents);
+        setEventoSelecionado(null);
+    }
 
     return (
         <div className="tela">
@@ -82,48 +102,10 @@ function Calendario() {
             </div>
 
             {eventoSelecionado && (
-                <EventModal evento={eventoSelecionado} onCLose={handleEventClose}/>
+                <EventModal evento={eventoSelecionado} onClose={handleEventClose} onDelete={handleEventDelete} onUpdate={handleEventUpdate}/>
             )}
         </div>
     );
 }
-
-const CustomTollbar = ({label, onView, onNavigate, views}) =>{
-    const [itemText, setItemText] = useState('month');
-
-    return(
-        <div className="toolbar-container">
-            <h1 className='mesAno'>{label}</h1>
-
-        <div className="dirtop">
-            <div className="dropdown">
-                <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                    {itemText}
-                </button>
-                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    {views.map((view, index)=> (
-                        <div key={index}>
-                            <li>
-                                <button className="dropdown-item" onClick={()=>onView(view)+ setItemText(view)}>{view}</button>
-                            </li>
-                            {index === 2 && <hr className="dropdown-divider"></hr>}
-                        </div>
-                    ))}
-                </ul>
-            </div>
-
-            <div className="toolbar-navegation" style={{marginLeft: '15px'}}>
-                <button className="btn btn-secondary btn-ls mr-2 border-0" onClick={()=>onNavigate('TODAY')}>Hoje</button>
-                <button className="btn btn-sm mr-2 text-secondary" onClick={()=>onNavigate('PREV')} style={{marginLeft: '15px'}}><i class="bi bi-caret-left"></i></button>
-                <button className="btn btn-sm mr-2 text-secondary" onClick={()=>onNavigate('NEXT')}><i class="bi bi-caret-right"></i></button>
-            </div>
-
-
-
-        </div>
-        </div>
-
-    )
-} 
 
 export default Calendario;

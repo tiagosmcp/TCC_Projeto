@@ -119,21 +119,6 @@ body {
   margin-right: auto;
 }
 
-.hero-button {
-  background-color: var(--primary-dark);
-  color: var(--white);
-  border: none;
-  padding: 0.875rem 2rem;
-  font-size: 1.125rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.hero-button:hover {
-  background-color: var(--primary-medium);
-  transform: translateY(-1px);
-}
 
 /* História Section */
 .historia {
@@ -160,22 +145,6 @@ body {
   color: var(--gray-medium);
   margin-bottom: 1rem;
   line-height: 1.7;
-}
-
-.historia-button {
-  background: none;
-  border: 2px solid var(--primary-dark);
-  color: var(--primary-dark);
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  margin-top: 1.5rem;
-  transition: all 0.2s ease;
-}
-
-.historia-button:hover {
-  background-color: var(--primary-dark);
-  color: var(--white);
 }
 
 .historia-image-container {

@@ -65,7 +65,6 @@ function Home() {
           <p className="hero-subtitle">
             Uma comunidade de fé, esperança e amor, onde todos são acolhidos para crescer espiritualmente e servir ao próximo.
           </p>
-          <button className="hero-button">Junte-se a Nós</button>
         </div>
       </section>
 
@@ -74,7 +73,7 @@ function Home() {
         <div className="container">
           <div className="historia-grid">
             <div className="historia-content">
-              <h3>Nossa História</h3>
+              <h3>Sobre nós</h3>
               <div>
                 <p className="historia-text">
                   A Igreja Presbiteriana do Brasil tem suas raízes profundas na tradição reformada, chegando ao nosso país no século XIX através de missionários dedicados que trouxeram a mensagem do Evangelho.
@@ -86,7 +85,6 @@ function Home() {
                   Hoje, somos uma família de milhares de igrejas espalhadas por todo o Brasil, unidas pela mesma fé e compromisso de levar o amor de Cristo a todas as pessoas, transformando vidas e comunidades.
                 </p>
               </div>
-              <button className="historia-button">Saiba Mais</button>
             </div>
             <div className="historia-image-container">
               <img
@@ -132,7 +130,7 @@ function Home() {
           </div>
 
           <div className="footer-bottom">
-            <p>&copy; 2024 Igreja Presbiteriana do Brasil. Todos os direitos reservados.</p>
+            <p>&copy; 2024 Igreja Presbiteriana Alvorada. Todos os direitos reservados.</p>
           </div>
         </div>
       </footer>
