@@ -73,7 +73,7 @@ body {
   justify-content: center;
 }
 
-.hero-image {
+.imagem-fundo {
   position: absolute;
   top: 0;
   left: 0;
@@ -190,25 +190,6 @@ body {
   margin-bottom: 1rem;
 }
 
-.footer-links {
-  list-style: none;
-}
-
-.footer-links li {
-  margin-bottom: 0.5rem;
-}
-
-.footer-links a {
-  color: var(--white);
-  text-decoration: none;
-  font-size: 0.875rem;
-  opacity: 0.9;
-  transition: opacity 0.2s ease;
-}
-
-.footer-links a:hover {
-  opacity: 0.8;
-}
 
 .social-icons {
   display: flex;
