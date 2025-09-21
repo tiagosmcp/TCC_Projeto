@@ -133,15 +133,3 @@
 .rbc-day-slot .rbc-time-slot{
     border-top: 1px solid #080808 ;
 }
-/*Agenda*/
-.rbc-agenda-content, .rbc-agenda-view{
-    color: #aaa;
-}
-.rbc-agenda-date-cell, .rbc-agenda-time-cell{
-    background-color: #796f6f;
-}
-.rbc-agenda-event-cell{
-    border-radius: 20px;
-    font-weight: bold;
-    color: #e0e0e0;
-}

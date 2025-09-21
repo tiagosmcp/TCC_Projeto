@@ -9,6 +9,7 @@ import eventosPadrao from "./eventosPadrao";
 import EventModal from "./ModalEvent/EventModal";
 import Adicionar from "./adicionar/Adicionar";
 import CustomTollbar from "./CustomCalendar/CustomTollBar";
+import FiltroProg from "./Filtro/FiltroProg";
 
 const DragAndDropCalendar = withDragAndDrop(Calendar);
 const localizer = momentLocalizer(moment);
@@ -17,6 +18,9 @@ function Calendario() {
     const [eventos, setEventos] = useState(eventosPadrao); //chamando os eventos
     //variavel para abrir uma tela ao clicar em algum evento, inicia com null e ao fechar fica null tambem, quando der dois cliques entra dentro de eventoSelecionado
     const [eventoSelecionado, setEventoSelecionado] = useState(null);
+
+    //inicia com todos os eventos mas vai conter apenas os que quiser mostrar na tela
+    const [eventosFiltrados, setEventosFiltrados] = useState(eventosPadrao);
 
     //entra no style de cada evento e seta a cor que ta nele
     const eventStyle = (event) => ({
@@ -77,17 +81,22 @@ function Calendario() {
         setEventoSelecionado(null);
     }
 
+    const handleSetSelecionarProg = (progSelecionadas) =>{
+        setEventosFiltrados(progSelecionadas)
+    }
+
     return (
         <div className="tela">
-            <div className="toolbar p-4">
+            <div className="toolbar p-4" style={{maxHeight:'100vh', overflowY:'auto'}}>
                 <Adicionar onAdicionar={handleAdicionar}/>
+                <FiltroProg programacoes={eventos} SelecionarProgramacoes={handleSetSelecionarProg}/>
             </div>
             
             <div className="calendario">
                 <DragAndDropCalendar
-                    defaultDate={moment().toDate()} //deixza o dia atual de outra tonalidade
+                    defaultDate={moment().toDate()} //deixa o dia atual de outra tonalidade
                     defaultView="month"
-                    events={eventos}
+                    events={eventosFiltrados}
                     localizer={localizer}
                     resizable
                     onEventDrop={moverEventos}
@@ -98,6 +107,7 @@ function Calendario() {
                         toolbar: CustomTollbar,
                     }}
                     className="calendar" //nome que chama no css o calendario
+                    views={["month", "week", "day"]}
                 />
             </div>
 
