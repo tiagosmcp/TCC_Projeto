@@ -24,7 +24,7 @@ function FiltroProg({programacoes,SelecionarProgramacoes}){
     },[tiposSelecionados, programacoes, SelecionarProgramacoes]);
 
     return(
-        tiposProg.length > 0&&(
+        tiposProg.length > 0 &&(
             <div className="p-3 rounded border border-white mt-3" style={{backgroundColor: '#e9ecef', color: '#212529'}}>
                 <div className = 'ps-1' style={{maxHeight:'25vh', overflowY: 'auto'}}> 
                     {tiposProg.map(tipo =>(

@@ -3,7 +3,7 @@ import { FaInstagram, FaFacebook, FaYoutube, FaWhatsapp } from 'react-icons/fa';
 import './Home.css';
 import { Link } from "react-router-dom";
 import ipbLogo from '../../assets/imagens/ipbLogo.png';
-//import ipbLogoFooter from '../../assets/imagens/ipbLogoFooter.png';
+import ipbLogoFooter from '../../assets/imagens/ipbLogoFooter.png';
 import IgrejaFundo from '../../assets/imagens/igrejaFundo.png';
 //import LadodoTexto from '../../assets/imagens/ladodoTexto.png';
 
@@ -72,7 +72,7 @@ function Home() {
         <div className="container">
           <div className="footer-grid">
             <div>
-              <img src={ipbLogo}  className="logo"/>
+              <img src={ipbLogoFooter}  className="footer-logo"/>
               <p className="footer-description">
                 Uma denominação comprometida com a Palavra de Deus e o serviço cristão.
               </p>

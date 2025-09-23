@@ -55,7 +55,7 @@ function Adicionar({onAdicionar}){
         
         <div className="CardAdicionarProg" style={{paddingTop: '20%'}}>
             <div className="adicionar p-3 rounded border border-white" style={{backgroundColor: '#e9ecef'}}>
-                <h3>Adicionar Programação</h3>
+                <h3 className="corTexto"style={{color: 'var(--gray-dark)'}}>Adicionar Programação</h3>
                 <Form onSubmit ={handleSubmit}>
                     <Form.Group controlId ="formBasicTitle">
                         <Form.Label>Nome da Programação</Form.Label>

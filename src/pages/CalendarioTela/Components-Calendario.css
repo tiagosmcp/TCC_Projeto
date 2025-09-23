@@ -25,7 +25,7 @@
 }
 .mesAno{
     width: 10%;
-    color:#080808;
+    color: var(--gray-dark);
     justify-content: flex-start;
 }
 .dirtop{
@@ -82,19 +82,19 @@
 /*Corpo*/
 /*Linhas*/
 .rbc-month-view {
-    border-color: #080808;
+    border-color: #968c8c;
 }
 .rbc-month-row + .rbc-month-row {
-    border-color: #080808;
+    border-color: #968c8c;
 }
 .rbc-day-bg + .rbc-day-bg {
-    border-color: #080808;
+    border-color: #968c8c;
 }
 
 /*Mes*/
 .rbc-header {
-    color: #080808;
-    border-color: #080808;
+    color: var(--gray-dark);
+    border-color: #968c8c;
 }
 .rbc-header + .rbc-header {
     border-top: 0px;
