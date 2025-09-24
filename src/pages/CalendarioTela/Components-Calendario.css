@@ -11,15 +11,35 @@
 .toolbar {
     height: 100vh;
     width: 20%;
-    background-color: #082414;
+    background-color: #04401e;
     border-right: 1px solid #000000;
 }
+
+/*botao de voltar na barra lateral*/
+.btn-voltar {
+  background: linear-gradient(145deg, #ffffff, #d4f1c5); 
+  color: #04401e; 
+  border: 2px solid #04401e;
+  border-radius: 6px; 
+  padding: 8px 16px; 
+  font-weight: 500; 
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+  transition: all 0.2s ease-in-out; 
+}
+
+.btn-voltar:hover {
+  background-color: #f0f0f0; 
+  transform: translateY(-1px); 
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3); 
+}
+
 
 /*header modificado*/
 .toolbar-container{
     display: flex;
     height: 10vh;
-   align-items: center;
+    align-items: center;
     padding-left: 50px;
     margin-top: 10px;
 }
@@ -57,6 +77,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.081);
     z-index: 10000;
 }
+
 
 /*Calendario*/
 /*Header*/

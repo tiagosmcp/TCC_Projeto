@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import moment from "moment";
+import "moment/locale/pt-br"; // importa o locale pt-BR
 import { Calendar, momentLocalizer } from "react-big-calendar";
-import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop"; //calendario dragAndDrop tem mais funcionalidades como mover e alterar
+import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop"; 
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "./Components-Calendario.css";
@@ -10,109 +11,102 @@ import EventModal from "./ModalEvent/EventModal";
 import Adicionar from "./adicionar/Adicionar";
 import CustomTollbar from "./CustomCalendar/CustomTollBar";
 import FiltroProg from "./Filtro/FiltroProg";
+import { Link } from "react-router-dom";
 
+
+// Configuração do Drag and Drop
 const DragAndDropCalendar = withDragAndDrop(Calendar);
+
+// Define o locale global
+moment.locale("pt-br");
+
+// Localizer do React Big Calendar
 const localizer = momentLocalizer(moment);
 
 function Calendario() {
-    const [eventos, setEventos] = useState(eventosPadrao); //chamando os eventos
-    //variavel para abrir uma tela ao clicar em algum evento, inicia com null e ao fechar fica null tambem, quando der dois cliques entra dentro de eventoSelecionado
+    const [eventos, setEventos] = useState(eventosPadrao);
     const [eventoSelecionado, setEventoSelecionado] = useState(null);
-
-    //inicia com todos os eventos mas vai conter apenas os que quiser mostrar na tela
     const [eventosFiltrados, setEventosFiltrados] = useState(eventosPadrao);
 
-    //entra no style de cada evento e seta a cor que ta nele
+    // Define a cor de cada evento
     const eventStyle = (event) => ({
         style: {
             backgroundColor: event.color,
         },
     });
 
-    //altera a data de inicio e fim ao arrastar ela no calendario
-    const moverEventos = (data) => {
-        const { start, end } = data;
-        //passa por cada evento verificando se a data selecionada existe nos eventos que ja existem
-        const updateEvents = eventos.map((event) => {
-            //retorna um evento com as datas corrigidas se forem iguais
-            if (event.id === data.event.id) {
-                return {
-                    ...event,
-                    start: new Date(start),
-                    end: new Date(end),
-                };
-            }
-            //retorna um evento sem alterações
-            return event;
-        });
-
-        setEventos(updateEvents);
-    };
-    //funcoes de abrir e fechar "detalhes" de um evento
-    const handleEventClick = (evento) => {
-        setEventoSelecionado(evento);
+    // Mover eventos ao arrastar
+    const moverEventos = ({ event, start, end }) => {
+        const updatedEvents = eventos.map(ev =>
+            ev.id === event.id ? { ...ev, start: new Date(start), end: new Date(end) } : ev
+        );
+        setEventos(updatedEvents);
     };
 
-    const handleEventClose = () => {
-        setEventoSelecionado(null);
-    };
+    // Abrir modal de evento
+    const handleEventClick = (evento) => setEventoSelecionado(evento);
 
-    //pega a lista, conta quantos elementos tem e adiciona +1 id, depois tem que mudar a logica pra luxar do banco
+    // Fechar modal de evento
+    const handleEventClose = () => setEventoSelecionado(null);
+
+    // Adicionar novo evento
     const handleAdicionar = (novoEvento) => {
-        setEventos([...eventos,{...novoEvento, id:eventos.length + 1}]);
+        setEventos([...eventos, { ...novoEvento, id: eventos.length + 1 }]);
     };
-   
-    //alterar quando arrumar o banco
-    const handleEventDelete = (eventId) =>{
-        const updatedEvents = eventos.filter((event) => event.id !== eventId)
+
+    // Deletar evento
+    const handleEventDelete = (eventId) => {
+        const updatedEvents = eventos.filter(ev => ev.id !== eventId);
         setEventos(updatedEvents);
         setEventoSelecionado(null);
     };
 
-    const handleEventUpdate = (updatedEvent) =>{
-        const updatedEvents = eventos.map((event)=>
-        {
-            if(event.id === updatedEvent.id){
-                return updatedEvent;
-            }
-            return event;
-        });
+    // Atualizar evento
+    const handleEventUpdate = (updatedEvent) => {
+        const updatedEvents = eventos.map(ev => ev.id === updatedEvent.id ? updatedEvent : ev);
         setEventos(updatedEvents);
         setEventoSelecionado(null);
-    }
+    };
 
-    const handleSetSelecionarProg = (progSelecionadas) =>{
-        setEventosFiltrados(progSelecionadas)
-    }
+    // Filtrar eventos
+    const handleSetSelecionarProg = (progSelecionadas) => setEventosFiltrados(progSelecionadas);
 
     return (
         <div className="tela">
-            <div className="toolbar p-4" style={{maxHeight:'100vh', overflowY:'auto'}}>
-                <Adicionar onAdicionar={handleAdicionar}/>
-                <FiltroProg programacoes={eventos} SelecionarProgramacoes={handleSetSelecionarProg}/>
+            <div className="toolbar p-4" style={{ maxHeight: '100vh', overflowY: 'auto' }}>
+                <Link to="/">
+                    <button className="btn-voltar">Voltar</button>
+                </Link>
+                <Adicionar onAdicionar={handleAdicionar} />
+                <FiltroProg programacoes={eventos} SelecionarProgramacoes={handleSetSelecionarProg} />
             </div>
-            
+
             <div className="calendario">
                 <DragAndDropCalendar
-                    defaultDate={moment().toDate()} //deixa o dia atual de outra tonalidade
+                    defaultDate={moment().toDate()}
                     defaultView="month"
                     events={eventosFiltrados}
                     localizer={localizer}
                     resizable
                     onEventDrop={moverEventos}
                     onEventResize={moverEventos}
-                    onSelectEvent={handleEventClick} //chama a funçaõ de abrir evento ao dar duplo clique nele}
-                    eventPropGetter={eventStyle} //chama a const que altera a cor dos eventos
-                    components={{//reescrever o toolbar
+                    onSelectEvent={handleEventClick}
+                    eventPropGetter={eventStyle}
+                    components={{
                         toolbar: CustomTollbar,
                     }}
-                    className="calendar" //nome que chama no css o calendario
+                    className="calendar"
                     views={["month", "week", "day"]}
                 />
             </div>
 
             {eventoSelecionado && (
-                <EventModal evento={eventoSelecionado} onClose={handleEventClose} onDelete={handleEventDelete} onUpdate={handleEventUpdate}/>
+                <EventModal
+                    evento={eventoSelecionado}
+                    onClose={handleEventClose}
+                    onDelete={handleEventDelete}
+                    onUpdate={handleEventUpdate}
+                />
             )}
         </div>
     );

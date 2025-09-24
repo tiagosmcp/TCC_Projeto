@@ -23,7 +23,9 @@ function Home() {
               <img src={ipbLogo}  className="logo"/>
             </div>
             <nav>
-              <Link to="/calendario" className="nav-button">Programações</Link>
+              <Link to="/calendario">
+                <button className="btn-programacoes">Programações</button> 
+              </Link>
             </nav>
           </div>
         </div>

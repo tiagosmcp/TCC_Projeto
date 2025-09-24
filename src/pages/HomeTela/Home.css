@@ -47,10 +47,24 @@ body {
   object-fit: contain;
 }
 
+.btn-programacoes {
+  background-color: #04401e; 
+  color: #968c8c;
+  border-radius: 6px; 
+  padding: 8px 16px; 
+  font-weight: 500; 
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+  transition: all 0.2s ease-in-out; 
+}
+
+.btn-programacoes:hover { 
+  transform: translateY(-1px); 
+}
 .nav-button {
   background: none;
   border: none;
-  color: var(--gray-dark);
+  color: gray;
   font-size: 1rem;
   padding: 0.5rem 1rem;
   cursor: pointer;
@@ -161,7 +175,7 @@ body {
 
 /* Footer */
 .footer {
-  background-color: var(--primary-dark);
+  background-color: var(--primary-medium);
   color: var(--white);
   padding: 3rem 0;
 }

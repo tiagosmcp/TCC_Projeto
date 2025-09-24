@@ -24,7 +24,7 @@ const eventosPadrao = [{
         tipo: 'UPH',
         local: 'quadra da igreja'
     },{
-        id: 2,
+        id: 4,
         title: 'Programação 4',
         start: new Date(2025,8,2,10,0),
         end: new Date(2025,8,2,20,0),
@@ -33,7 +33,7 @@ const eventosPadrao = [{
         local: 'quadra da igreja'
     },
     {
-        id: 2,
+        id: 5,
         title: 'Programação 5',
         start: new Date(2025,8,3,10,0),
         end: new Date(2025,8,3,20,0),

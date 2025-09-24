@@ -38,7 +38,10 @@ function Adicionar({onAdicionar}){
                 return;
             }
 
-            onAdicionar(novoEvento);
+            onAdicionar({...novoEvento, 
+                start: startDate,
+                end: endDate,
+            });
             setNovoEvento({
                 title: '',
                 start: '',

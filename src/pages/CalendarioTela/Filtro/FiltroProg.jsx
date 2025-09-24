@@ -36,7 +36,7 @@ function FiltroProg({programacoes,SelecionarProgramacoes}){
                             className='mr-3 mb-3'/>
                         ))}
                 </div>
-                <button className='btn btn-outile-secondary btn-hover-gray' onClick={()=>setTiposSelecionados([])}>Limpar Filtro</button>
+                <button className="btn btn-secondary w-100 mt-3" onClick={()=>setTiposSelecionados([])}>Limpar Filtro</button>
             </div>
         )
     )
