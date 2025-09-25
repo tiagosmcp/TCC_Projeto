@@ -5,8 +5,12 @@ import { Link } from "react-router-dom";
 import ipbLogo from '../../assets/imagens/ipbLogo.png';
 import ipbLogoFooter from '../../assets/imagens/ipbLogoFooter.png';
 import IgrejaFundo from '../../assets/imagens/igrejaFundo.png';
-import LadodoTexto from '../../assets/imagens/ladodoTexto.png';
-
+import ladodoTexto from '../../assets/imagens/ladodoTexto.png';
+import ucpLogo from '../../assets/imagens/ucpLogo.png';
+import upaLogo from '../../assets/imagens/upaLogo.png';
+import umpLogo from '../../assets/imagens/umpLogo.png';
+import safLogo from '../../assets/imagens/safLogo.png';
+import uphLogo from '../../assets/imagens/uphLogo.png';
 
 
 function Home() {
@@ -22,15 +26,15 @@ function Home() {
             </div>
 
               <div className="botoes-header" style={{ display: "flex", justifyContent: "center", gap: "1rem", flex: 1 }}>
-                <Link to="">
+                 <a href="#localizacao">
                   <button className="botoes">Localização</button> 
-                </Link>
-                <Link to="/">
+                </a>
+                <a href="#sobre-nos">
                   <button className="botoes">Sobre Nós</button> 
-                </Link>
-                <Link to="/">
+                </a>
+                <a href="#sociedades">
                   <button className="botoes">Sociedades</button> 
-                </Link>
+                </a>
                 <Link to="/calendario">
                   <button className="botoes">Programações</button> 
                 </Link>
@@ -57,7 +61,7 @@ function Home() {
       {/* História Section */}
       <section className="meio">
         <div className="container">
-          <div className="esquerda-grid">
+          <div className="esquerda-grid" id="sobre-nos">
             <div className="esquerda-content">
               <h3>Sobre nós</h3>
               <div>
@@ -76,12 +80,12 @@ function Home() {
               </div>
             </div>
             <div className="historia-image-container">
-              <img src={LadodoTexto} className="historia-image"/>
+              <img src={ladodoTexto} className="historia-image"/>
             </div>
           </div>
 
           {/*Localizacao Section*/}
-          <div className="direita-grid">
+          <div className="direita-grid" id="localizacao">
               <div className="loc-maps-container">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3772.6317767058545!2d-46.31073698987374!3d-18.991862782121192!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ae0f6bb80affd5%3A0x212a0ba90df73e92!2sIgreja%20Presbiteriana%20Alvorada!5e0!3m2!1spt-BR!2sbr!4v1758806835229!5m2!1spt-BR!2sbr"
                 className='loc-image'
@@ -92,16 +96,45 @@ function Home() {
                   <h3>Localização</h3>
                   <div>
                     <p className="direita-text">
-                      Estamos localizados na rua Agusto Branquinho número 608, bairro Niterói.
+                      Estamos localizados na Rua Agusto Branquinho, nº 608, no bairro Niterói, em Carmo do Paranaíba. 
+                      Nossa igreja está em uma região de fácil acesso, próxima a pontos de referência da cidade.
+                      Venha nos visitar e conhecer nosso espaço, participar de nossos cultos e atividades!
                     </p>
                   </div>
                 </div>
             </div>
 
             {/*Sociedades section */}
-           
-            
-          
+            <h3 className="sociedadetitulo" style={{color: '#3c3f40'}} id="sociedades">Sociedades</h3>
+                  <p>A igreja conta com sociedades internas, organizadas por faixa etária e sexo para promover a integração e o 
+                    desenvolvimento dos membros e visitantes, veja um pouco mais sobre cada uma logo abaixo!</p>
+            <div className="sociedades-grid">
+                <div className="sociedades-content">
+                  <div>
+                    <h3>UCP - União de Crianças Presbiterianas</h3> 
+                    <p className="sociedades-text">
+                      A UCP é uma sociedade interna da IPB voltada para reunir crianças entre 6 e 11 anos, 
+                      oferecendo recursos e atividades que favoreçam seu crescimento espiritual, moral, intelectual e social.
+                      As iniciativas promovidas pela UCP têm como principal objetivo ensinar o serviço cristão e desenvolver habilidades de liderança dentro do modelo
+                      de governo da igreja.
+                    </p>
+                    <p className="sociedades-text">
+                      “Batalhando por Cristo, lutando com amor, sou um soldado de nosso Senhor.”
+                    </p>
+                    <p className="sociedades-text">
+                      Anunciar o evangelho, edificar vidas, socializar as crianças, incentivar práticas cristãs e modelar servos para obra de Deus.
+                      Como a UCP não possui diretoria própria, a condução desta Força de Integração fica sob a responsabilidade da Secretaria Nacional do Trabalho da Infância - SNTI
+                    </p>
+                  </div>
+                </div>
+                <div className="sociedades-image-container">
+                  <img src={ucpLogo} className="sociedades-image"/>
+                </div>
+                
+
+
+
+            </div>
         </div>
       </section>
 

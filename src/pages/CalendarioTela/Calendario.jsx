@@ -12,6 +12,7 @@ import Adicionar from "./adicionar/Adicionar";
 import CustomTollbar from "./CustomCalendar/CustomTollBar";
 import FiltroProg from "./Filtro/FiltroProg";
 import { Link } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
 
 
 // Configuração do Drag and Drop
@@ -75,7 +76,7 @@ function Calendario() {
         <div className="tela">
             <div className="toolbar p-4" style={{ maxHeight: '100vh', overflowY: 'auto' }}>
                 <Link to="/">
-                    <button className="btn-voltar">Voltar</button>
+                    <button className="btn-voltar"><FaArrowLeft /></button>
                 </Link>
                 <Adicionar onAdicionar={handleAdicionar} />
                 <FiltroProg programacoes={eventos} SelecionarProgramacoes={handleSetSelecionarProg} />
