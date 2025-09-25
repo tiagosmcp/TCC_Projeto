@@ -29,10 +29,9 @@ body.has-fixed-header {
   height: var(--header-height);
   background: #f8f9fa;
   border-bottom: 1px solid var(--gray-light);
-  z-index: 9999;              /* deve ficar acima do restante */
+  z-index: 9999;              
   display: flex;
-  align-items: center;        /* centraliza verticalmente o conteúdo do header */
-
+  align-items: center;     
 }
 
 .header-content { 
@@ -43,13 +42,13 @@ body.has-fixed-header {
 }
 
 .logo {
-  height: calc(var(--header-height) - 24px); /* deixa um pequeno espaçamento vertical */
+  height: calc(var(--header-height) - 24px); 
   max-height: 100%;
   width: auto;
   object-fit: contain;
 }
 
-.btn-programacoes {
+.botoes {
   background: var(--primary-medium);
   color: var(--white);
   border-radius: 6px;
@@ -58,32 +57,26 @@ body.has-fixed-header {
   cursor: pointer;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
   transition: 0.2s;
+  margin-top: 20px;
 }
-.btn-programacoes:hover { transform: translateY(-1px); }
+.botoes:hover { transform: translateY(-1px); }
 
-.btn-Loc {
-  background: var(--primary-medium);
-  color: var(--white);
-  border-radius: 6px;
-  padding: 8px 16px;
-  font-weight: 500;
+.btn-login {       
+  color: var(--primary-medium);             
+  border: none;                               
+  padding: 0;                   
   cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  transition: 0.2s;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 35px;
 }
-.btn-Loc:hover { transform: translateY(-1px); }
 
-.btn-Sobre {
-  background: var(--primary-medium);
-  color: var(--white);
-  border-radius: 6px;
-  padding: 8px 16px;
-  font-weight: 500;
-  cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  transition: 0.2s;
+.btn-login:hover {
+  transform: translateY(-2px) scale(1.05);
 }
-.btn-Sobre:hover { transform: translateY(-1px); }
+
 
 /* Hero */
 .hero {
@@ -135,14 +128,15 @@ body.has-fixed-header {
   background: #f8f9fa;
 }
 
-.historia-grid { 
+.esquerda-grid { 
   display: grid;
+  grid-template-columns: 1fr 1fr; /* <-- adiciona as duas colunas */
   gap: 3rem;
   align-items: center;
   margin-bottom: 80px;
 }
 
-.historia-content h3 {
+.esquerda-content h3 {
   font-family: "Playfair Display", serif;
   font-size: 2.5rem;
   font-weight: 700;
@@ -150,13 +144,11 @@ body.has-fixed-header {
   color: var(--gray-dark);
 }
 
-.historia-text { 
+.esquerda-text { 
   text-indent: 30px;
   color: var(--gray-medium);
   margin-bottom: 1rem;
-  line-height: 1.7; }
-  .historia-image-container { border-radius: .75rem;
-  overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,.1); 
+  line-height: 1.7;
 }
 
 .historia-image-container { 
@@ -165,6 +157,7 @@ body.has-fixed-header {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   background-color:#b8d8c2
 }
+.historia-image-container:hover { transform: translateY(-1px); }
 .historia-image {
   width: 100%;
   height: auto;
@@ -173,28 +166,13 @@ body.has-fixed-header {
   margin-top: 5%;
 }
 
-
 /* Localização */
-.loc-grid { 
+.direita-grid { 
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* mapa | texto */
   gap: 2rem;
-}
-
-.bloco-texto-map{
-  margin-left: 50%;
-}
-.loc-content h3 {
-  font-family: "Playfair Display", serif;
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  color: var(--gray-dark);
-}
-
-.loc-text { 
-  text-indent: 30px;
-  color: var(--gray-medium);
-  margin-bottom: 1rem;
-  line-height: 1.7;
+  align-items: start;
+  margin-bottom: 80px;
 }
 
 .loc-maps-container { 
@@ -202,7 +180,6 @@ body.has-fixed-header {
   overflow: hidden;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   height: 400px;
-  margin-right: 52%;
 }
 
 .loc-image {
@@ -210,6 +187,21 @@ body.has-fixed-header {
   height: 100%;
   display: block;
   border: 0;
+}
+
+.bloco-texto-direita h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--gray-dark);
+}
+
+.bloco-texto-direita .direita-text { 
+  text-indent: 30px;
+  color: var(--gray-medium);
+  margin-bottom: 1rem;
+  line-height: 1.7;
 }
 
 
