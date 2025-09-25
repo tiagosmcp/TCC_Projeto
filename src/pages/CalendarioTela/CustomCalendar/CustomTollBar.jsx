@@ -6,7 +6,7 @@ const CustomTollbar = ({label, onView, onNavigate, views}) =>{
 
         return(
                 <div className="toolbar-container">
-                    <h4 className='mesAno'>{label}</h4>
+                    <h6 className='mesAno'>{label}</h6>
 
                     <div className="dirtop">
                         <div className="dropdown">

@@ -5,14 +5,12 @@ import { Link } from "react-router-dom";
 import ipbLogo from '../../assets/imagens/ipbLogo.png';
 import ipbLogoFooter from '../../assets/imagens/ipbLogoFooter.png';
 import IgrejaFundo from '../../assets/imagens/igrejaFundo.png';
-//import LadodoTexto from '../../assets/imagens/ladodoTexto.png';
-
-
-
+import LadodoTexto from '../../assets/imagens/ladodoTexto.png';
 
 
 
 function Home() {
+
   return (
     <div className="min-h-screen">
       {/* Header */}
@@ -23,6 +21,12 @@ function Home() {
               <img src={ipbLogo}  className="logo"/>
             </div>
             <nav>
+              <Link to="">
+                <button className="btn-Loc">Localização</button> 
+              </Link>
+              <Link to="">
+                <button className="btn-Sobre">Sobre Nós</button> 
+              </Link>
               <Link to="/calendario">
                 <button className="btn-programacoes">Programações</button> 
               </Link>
@@ -44,28 +48,50 @@ function Home() {
       </section>
 
       {/* História Section */}
-      <section className="historia">
+      <section className="meio">
         <div className="container">
           <div className="historia-grid">
             <div className="historia-content">
               <h3>Sobre nós</h3>
               <div>
                 <p className="historia-text">
-                  Somos uma igreja cristã reformada comprometida com o Evangelho de Jesus Cristo. Somos uma igreja bíblica porque cremos que a Palavra de Deus é a única regra de fé e prática.
+                  Somos uma igreja cristã reformada comprometida com o Evangelho de Jesus Cristo. Somos uma igreja bíblica porque cremos que a Palavra de Deus é a
+                  única regra de fé e prática.
                 </p>
                 <p className="historia-text">
                   Organizada em 2003 como igreja Presbiteriana Alvorada, dando continuidade a linda história da Igreja Presbiteriana do Brasil em Carmo do Paranaíba.
                 </p>
+                <p className="historia-text">
+                  Na Igreja Presbiteriana, a sarça ardente, representada pela figura ao lado, simboliza a Presença e Preservação de Deus em meio à perseguição e sofrimento da igreja,
+                  com base na história bíblica de Moisés no Monte Horebe. O fogo que arde sem consumir o arbusto representa a presença divina que sustenta 
+                  e protege a igreja, permitindo que ela não seja destruída por provações, mas que continue a viver e florescer em meio a elas. 
+                </p>  
               </div>
             </div>
             <div className="historia-image-container">
-              <img
-                src="/historic-church-congregation-gathering-in-worship.png"
-                alt="Congregação histórica da IPB"
-                className="historia-image"
-              />
+              <img src={LadodoTexto} className="historia-image"/>
             </div>
           </div>
+
+          {/*Localizacao Section*/}
+          <div className="loc-grid">
+            <div className="loc-content">
+              <div className="loc-maps-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3772.6317767058545!2d-46.31073698987374!3d-18.991862782121192!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ae0f6bb80affd5%3A0x212a0ba90df73e92!2sIgreja%20Presbiteriana%20Alvorada!5e0!3m2!1spt-BR!2sbr!4v1758806835229!5m2!1spt-BR!2sbr"
+                className='loc-image'
+                loading='lazy'>
+                </iframe>
+              </div>
+                <div className="bloco-texto-map">
+                  <h3>Localização</h3>
+                  <div>
+                    <p className="loc-text">
+                      Estamos localizados na rua Agusto Branquinho número 608, bairro Niterói.
+                    </p>
+                  </div>
+                </div>
+            </div>
+            </div>
         </div>
       </section>
 
