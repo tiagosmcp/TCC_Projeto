@@ -73,7 +73,7 @@ function Home() {
                   Organizada em 2003 como igreja Presbiteriana Alvorada, dando continuidade a linda história da Igreja Presbiteriana do Brasil em Carmo do Paranaíba.
                 </p>
                 <p className="esquerda-text">
-                  Na Igreja Presbiteriana, a sarça ardente, representada pela figura ao lado, simboliza a Presença e Preservação de Deus em meio à perseguição e sofrimento da igreja,
+                  Na Igreja Presbiteriana, a sarça ardente, representada pela figura ao lado, simboliza a presença e preservação de Deus em meio à perseguição e sofrimento da igreja,
                   com base na história bíblica de Moisés no Monte Horebe. O fogo que arde sem consumir o arbusto representa a presença divina que sustenta 
                   e protege a igreja, permitindo que ela não seja destruída por provações, mas que continue a viver e florescer em meio a elas. 
                 </p>  
@@ -105,10 +105,11 @@ function Home() {
             </div>
 
             {/*Sociedades section */}
-            <h3 className="sociedadetitulo" style={{color: '#3c3f40'}} id="sociedades">Sociedades</h3>
+            <h3 className="sociedadetitulo" id="sociedades">Sociedades</h3>
                   <p>A igreja conta com sociedades internas, organizadas por faixa etária e sexo para promover a integração e o 
                     desenvolvimento dos membros e visitantes, veja um pouco mais sobre cada uma logo abaixo!</p>
-            <div className="sociedades-grid">
+            {/* UCP */}
+              <div className="sociedades-grid">
                 <div className="sociedades-content">
                   <div>
                     <h3>UCP - União de Crianças Presbiterianas</h3> 
@@ -130,40 +131,137 @@ function Home() {
                 <div className="sociedades-image-container">
                   <img src={ucpLogo} className="sociedades-image"/>
                 </div>
-                
+              </div>
 
+              {/* UPA */}
+              <div className="sociedades-grid invert">
+                <div className="sociedades-image-container">
+                  <img src={upaLogo} className="sociedades-image"/>
+                </div>
+                <div className="sociedades-content">
+                  <div>
+                    <h3>UPA - União Presbiteriana de Adolescentes</h3> 
+                    <p className="sociedades-text">
+                      A UPA reúne adolescentes de 12 a 18 anos e tem como propósito promover atividades que incentivem a comunhão, 
+                      o amadurecimento espiritual e o fortalecimento da identidade cristã.
+                    </p>
+                    <p className="sociedades-text">
+                      “Ao Mestre sejamos fiéis, nas trevas sejamos luz, nas lutas sejamos fortes, servindo ao Senhor Jesus”.
+                    </p>
+                    <p className="sociedades-text">
+                      A União Presbiteriana de Adolescentes foi criada em 1967, na Igreja Presbiteriana do Rio de Janeiro, quando a irmã Dorcas Araújo
+                      Machado identificou a necessidade de oferecer programações específicas para os adolescentes que costumavam chegar antes dos cultos.
+                      Com a aprovação do Conselho da igreja, surgiu a UPA. Em um dos salões, a irmã organizava atividades como evangelismo pessoal, apresentações teatrais, gincanas e momentos de louvor. A proposta rapidamente foi adotada por outras igrejas no Brasil.
+                    </p>
+                  </div>
+                </div>
+              </div>
 
+              {/* UMP */}
+              <div className="sociedades-grid">
+                <div className="sociedades-content">
+                  <div>
+                    <h3>UMP - União de Mocidade Presbiteriana</h3> 
+                    <p className="sociedades-text">
+                      A União de Mocidade Presbiteriana é uma das sociedades internas da IPB, reunindo jovens entre 18 e 35 anos.
+                      Seu propósito é promover o cuidado, a comunhão e o desenvolvimento espiritual da juventude, organizando atividades
+                      tanto no âmbito da igreja local quanto em parceria com outras igrejas ao redor do país.
+                    </p>
+                    <p className="sociedades-text">
+                      “Alegres na esperança, fortes na fé, dedicados no amor, unidos no trabalho”
+                    </p>
+                    <p className="sociedades-text">
+                      Há registros de grupos de jovens atuando nas igrejas presbiterianas desde a década de 1930. A primeira UMP oficial foi
+                      organizada na Igreja Presbiteriana do Rio de Janeiro, em 28 de agosto de 1934. Pouco tempo depois, em 1936, o Supremo Concílio
+                      recomendou que os Conselhos das igrejas locais incentivassem a criação das Uniões de Mocidade Presbiteriana, reconhecendo oficialmente
+                      o nome adotado pela UMP do Rio. Assim, a história da UMP é contada a partir da decisão do Supremo Concílio em julho de 1936.
+                    </p>
+                  </div>
+                </div>
+                <div className="sociedades-image-container">
+                  <img src={umpLogo} className="sociedades-image"/>
+                </div>
+              </div>
 
-            </div>
+              {/* SAF */}
+              <div className="sociedades-grid invert">
+                <div className="sociedades-image-container">
+                  <img src={safLogo} className="sociedades-image"/>
+                </div>
+                <div className="sociedades-content">
+                  <div>
+                    <h3>SAF - Sociedade Auxiliadora Feminina</h3> 
+                    <p className="sociedades-text">
+                      A Sociedade Auxiliadora Feminina é o ministério das mulheres da igreja, que tem como propósito apoiar as atividades de cada igreja e congregação,
+                      além de despertar nas mulheres a consciência de sua missão como integrantes do Corpo de Cristo.
+                    </p>
+                    <p className="sociedades-text">
+                      “Sejamos verdadeiras auxiliadoras, irrepreensíveis na conduta, incansáveis na luta, firmes na fé e vitoriosas por Cristo Jesus.”
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* UPH */}
+              <div className="sociedades-grid invert">
+                <div className="sociedades-image-container">
+                  <img src={uphLogo} className="sociedades-image"/>
+                </div>
+                <div className="sociedades-content">
+                  <div>
+                    <h3>UPH - União Presbiteriana de Homens</h3> 
+                    <p className="sociedades-text">
+                      A União Presbiteriana de Homens tem como propósito incentivar a comunhão, a vida devocional, 
+                      o crescimento no conhecimento da Palavra e a participação ativa na vida da Igreja local, fortalecendo assim toda a comunidade.
+                    </p>
+                    <p className="sociedades-text">
+                      Através da UPH, os homens cristãos encontram um espaço de convivência saudável e edificante, onde podem desenvolver sua espiritualidade por meio de estudos bíblicos, 
+                      oração e palestras. Além disso, há momentos de aprendizado voltados para questões práticas do dia a dia, como o relacionamento no lar com esposa e filhos, o enfrentamento de tentações,
+                      a administração das finanças e os desafios no ambiente de trabalho. Cursos e treinamentos também fazem parte das atividades, sempre com a finalidade de edificar a vida cristã e preparar homens para servir melhor ao Senhor e à igreja.
+                    </p>
+                  </div>
+                </div>
+              </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="footer">
-        <div className="container">
-          <div className="footer-grid">
-            <div>
-              <img src={ipbLogoFooter}  className="footer-logo"/>
+        {/* Footer */}
+        <footer className="footer">
+          <div className="container footer-container">
+            {/* Coluna esquerda */}
+            <div className="footer-left">
+              <img src={ipbLogoFooter} className="footer-logo" alt="IPB Logo" />
               <p className="footer-description">
                 Uma denominação comprometida com a Palavra de Deus e o serviço cristão.
               </p>
             </div>
-            <div>
-              <h5>Redes Sociais</h5>
+
+            {/* Coluna direita */}
+            <div className="footer-right">
+              <h5 className="footer-title">Redes Sociais</h5>
               <div className="social-icons">
-                <a href="https://www.instagram.com/ipbalvoradacarmo?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" className="social-icon"><FaInstagram size={24}/></a>
-                <a href="https://www.facebook.com/people/IPB-Alvorada-Carmo-do-Paranaiba/100080372426356/#" className="social-icon"><FaFacebook size={24}/></a>
-                <a href="http://www.youtube.com/@ipresbiterianaalvoradacarmo" className="social-icon"><FaYoutube size={24}/></a>
-                <a href="#" className="social-icon"><FaWhatsapp size={24} /></a>
+                <a href="https://www.instagram.com/ipbalvoradacarmo" className="social-icon">
+                  <FaInstagram size={22}/>
+                </a>
+                <a href="https://www.facebook.com/people/IPB-Alvorada-Carmo-do-Paranaiba/100080372426356/#" className="social-icon">
+                  <FaFacebook size={22}/>
+                </a>
+                <a href="http://www.youtube.com/@ipresbiterianaalvoradacarmo" className="social-icon">
+                  <FaYoutube size={22}/>
+                </a>
+                <a href="#" className="social-icon">
+                  <FaWhatsapp size={22}/>
+                </a>
               </div>
             </div>
           </div>
 
+          {/* Linha inferior */}
           <div className="footer-bottom">
-            <p>&copy; 2024 Igreja Presbiteriana Alvorada. Todos os direitos reservados.</p>
+            <p>&copy; 2025 Igreja Presbiteriana Alvorada. Todos os direitos reservados.</p>
           </div>
-        </div>
-      </footer>
+        </footer>
+
     </div>
   );
 }
