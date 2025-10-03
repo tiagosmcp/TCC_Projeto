@@ -249,7 +249,7 @@ function Home() {
                 <a href="http://www.youtube.com/@ipresbiterianaalvoradacarmo" className="social-icon">
                   <FaYoutube size={22}/>
                 </a>
-                <a href="#" className="social-icon">
+                <a href="https://wa.me/553499386303" className="social-icon">
                   <FaWhatsapp size={22}/>
                 </a>
               </div>
