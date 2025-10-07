@@ -6,6 +6,7 @@
 .calendario {
     height: 100vh;
     width: 80%;
+    overflow-x: auto; 
 }
 
 .toolbar {
@@ -13,6 +14,9 @@
     width: 20%;
     background-color: #04401e;
     border-right: 1px solid #000000;
+    /* Adicionar rolagem para o toolbar */
+    overflow-y: auto; 
+    max-height: 100vh; 
 }
 
 /*botao de voltar na barra lateral*/
@@ -35,25 +39,31 @@
 }
 
 
-/*header modificado*/
+/*header modificado - CustomTollBar */
 .toolbar-container{
     display: flex;
     height: 10vh;
     align-items: center;
     padding-left: 50px;
     margin-top: 10px;
+    justify-content: space-between; /* Ajuste para melhor distribuição em telas maiores */
 }
 .mesAno{
-    width: 10%;
     color: var(--gray-dark);
     justify-content: flex-start;
+    font-size: 1.5rem; /* Aumentar um pouco o tamanho para visibilidade */
+    margin: 0;
 }
 .dirtop{
-    width: 50%;
-    justify-content: end;
     display: flex;
     align-items: center;
     padding-right: 50px;
+    gap: 15px; /* Espaçamento entre dropdown e navegação */
+}
+
+.toolbar-navegation {
+    display: flex;
+    gap: 5px; /* Espaçamento entre os botões de navegação */
 }
 
 /*modal*/
@@ -153,4 +163,103 @@
 }
 .rbc-day-slot .rbc-time-slot{
     border-top: 1px solid #080808 ;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 992px) {
+    .tela {
+        flex-direction: column; /* Empilha a barra de ferramentas (toolbar) e o calendário */
+    }
+
+    .toolbar {
+        height: auto; /* Altura ajustável ao conteúdo */
+        width: 100%; /* Largura total */
+        border-right: none;
+        border-bottom: 1px solid #000000;
+        /* Limite de altura e rolagem para o toolbar no topo */
+        max-height: 80vh; 
+        overflow-y: auto;
+    }
+
+    .calendario {
+        height: 70vh; /* Altura menor para dar espaço ao toolbar */
+        width: 100%; /* Largura total */
+        overflow-x: auto; /* Mantém a rolagem horizontal */
+    }
+    
+    /* Ajustes internos no toolbar para telas menores */
+    .toolbar .p-4 {
+        padding: 1rem !important;
+    }
+
+    /* Ajuste para o filtro para evitar que tome muito espaço vertical */
+    .toolbar .p-3.rounded.border.mt-3 {
+        padding: 0.75rem !important;
+        margin-top: 0.75rem !important;
+    }
+    .toolbar .ps-1 {
+        max-height: 20vh !important; /* Limita a altura da lista de filtros */
+    }
+
+    /* Redefinir a altura do calendário BigCalendar para se ajustar à nova altura do container */
+    .rbc-calendar {
+        height: 100%;
+    }
+}
+
+/* Ajustes para telas ainda menores (smartphones) */
+@media (max-width: 768px) {
+    .calendario {
+        height: 60vh; /* Reduzir um pouco mais em telas muito pequenas */
+    }
+
+    /* Ajustar layout da barra de ferramentas personalizada do calendário */
+    .toolbar-container {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-top: 5px;
+    }
+
+    .mesAno {
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+        width: 100%;
+        text-align: center;
+        padding-right: 0;
+    }
+
+    .dirtop {
+        width: 100%;
+        padding-right: 0;
+        justify-content: space-between;
+        margin-bottom: 5px;
+    }
+    
+    /* Ocultar o dropdown de views no toolbar personalizado em telas menores */
+    .dropdown {
+        display: none;
+    }
+    
+    .dirtop .toolbar-navegation {
+        margin-left: 0;
+        justify-content: center;
+        width: 100%;
+    }
+
+    /* Ocultar os botões de 'Semana' e 'Dia' na barra de ferramentas nativa do Big Calendar
+       (apenas se estiver usando a barra nativa, mas o CustomTollbar está em uso) */
+    .rbc-toolbar .rbc-btn-group {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    /* Ajustes nos botões do CustomToolbar para ficarem melhores em mobile */
+    .btn-prev, .btn-next {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
 }

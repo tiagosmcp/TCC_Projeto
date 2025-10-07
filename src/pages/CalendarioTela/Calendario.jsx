@@ -74,7 +74,7 @@ function Calendario() {
 
     return (
         <div className="tela">
-            <div className="toolbar p-4" style={{ maxHeight: '100vh', overflowY: 'auto' }}>
+            <div className="toolbar p-4">
                 <Link to="/">
                     <button className="btn-voltar"><FaArrowLeft /></button>
                 </Link>

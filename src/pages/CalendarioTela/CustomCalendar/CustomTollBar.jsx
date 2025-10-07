@@ -45,10 +45,9 @@ const CustomTollbar = ({label, onView, onNavigate, views}) =>{
                         </ul>
                     </div>
 
-                    <div className="toolbar-navegation" style={{marginLeft: '15px'}}>
-                        {/* Correção: Usando className no lugar de class para JSX */}
-                        <button className="btn btn-sm mr-2 text-secondary" onClick={()=>onNavigate('PREV')} style={{ marginLeft: '15px'}}><i className='bi bi-caret-left'></i></button>
-                        <button className="btn btn-sm mr-2 text-secondary" onClick={()=>onNavigate('NEXT')}><i className='bi bi-caret-right'></i></button>
+                    <div className="toolbar-navegation">
+                        <button className="btn btn-sm mr-2 text-secondary btn-prev" onClick={()=>onNavigate('PREV')}><i className='bi bi-caret-left'></i></button>
+                        <button className="btn btn-sm mr-2 text-secondary btn-next" onClick={()=>onNavigate('NEXT')}><i className='bi bi-caret-right'></i></button>
                     </div>
                 </div>
 
