@@ -207,10 +207,10 @@
     }
 }
 
-/* Ajustes para telas ainda menores (smartphones) */
+/*responsivo pra celular */
 @media (max-width: 768px) {
     .calendario {
-        height: 60vh; /* Reduzir um pouco mais em telas muito pequenas */
+        height: 60vh; 
     }
 
     /* Ajustar layout da barra de ferramentas personalizada do calendário */
