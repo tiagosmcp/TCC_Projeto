@@ -1,3 +1,4 @@
+
 CREATE DATABASE ipb_alvorada;
 USE ipb_alvorada;
 
@@ -33,4 +34,5 @@ INSERT INTO usuarios (nome, senha, cor, tipo) VALUES
 ('AdminSAF' , '123', '#ca3cb7ff', 'SAF'),
 ('AdminUPH' , '123', '#6c757d', 'UPH')
 ON DUPLICATE KEY UPDATE nome=VALUES(nome);
+
 
