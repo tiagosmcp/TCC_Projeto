@@ -1,0 +1,265 @@
+.tela {
+    display: flex;
+    background-color: #e9ecef;
+}
+
+.calendario {
+    height: 100vh;
+    width: 80%;
+    overflow-x: auto; 
+}
+
+.toolbar {
+    height: 100vh;
+    width: 20%;
+    background-color: #04401e;
+    border-right: 1px solid #000000;
+    /* Adicionar rolagem para o toolbar */
+    overflow-y: auto; 
+    max-height: 100vh; 
+}
+
+/*botao de voltar na barra lateral*/
+.btn-voltar {
+  background: linear-gradient(145deg, #ffffff, #d4f1c5); 
+  color: #04401e; 
+  border: 2px solid #04401e;
+  border-radius: 6px; 
+  padding: 8px 16px; 
+  font-weight: 500; 
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+  transition: all 0.2s ease-in-out; 
+}
+
+.btn-voltar:hover {
+  background-color: #f0f0f0; 
+  transform: translateY(-1px); 
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3); 
+}
+
+
+/*header modificado - CustomTollBar */
+.toolbar-container{
+    display: flex;
+    height: 10vh;
+    align-items: center;
+    padding-left: 50px;
+    margin-top: 10px;
+    justify-content: space-between; /* Ajuste para melhor distribuição em telas maiores */
+}
+.mesAno{
+    color: var(--gray-dark);
+    justify-content: flex-start;
+    font-size: 1.5rem; /* Aumentar um pouco o tamanho para visibilidade */
+    margin: 0;
+}
+.dirtop{
+    display: flex;
+    align-items: center;
+    padding-right: 50px;
+    gap: 15px; /* Espaçamento entre dropdown e navegação */
+}
+
+.toolbar-navegation {
+    display: flex;
+    gap: 5px; /* Espaçamento entre os botões de navegação */
+}
+
+/*modal*/
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.562);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-content {
+    background-color: aliceblue;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.081);
+    z-index: 10000;
+}
+
+
+/*Calendario*/
+/*Header*/
+.rbc-toolbar {
+    height: 10vh;
+    color: #bbb;
+    font-size: 20px;
+}
+.rbc-btn-group > button {
+    border: 0;
+}
+
+.rbc-toolbar button {
+    color: #cecece;
+    border: 1px solid #cccccc4f;
+}
+.rbc-toolbar button:active,
+.rbc-toolbar button.rbc-active {
+    background-color: #56565686;
+    border-color: #bbb;
+}
+
+/*Corpo*/
+/*Linhas*/
+.rbc-month-view {
+    border-color: #968c8c;
+}
+.rbc-month-row + .rbc-month-row {
+    border-color: #968c8c;
+}
+.rbc-day-bg + .rbc-day-bg {
+    border-color: #968c8c;
+}
+
+/*Mes*/
+.rbc-header {
+    color: var(--gray-dark);
+    border-color: #968c8c;
+}
+.rbc-header + .rbc-header {
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-color: #080808;
+}
+/*dias fora do range, do mes passado ou futuro*/
+.rbc-off-range-bg {
+    background-color: #b9b0b0;
+}
+.rbc-today {
+    background-color: #5f5959;
+}
+.rbc-button-link {
+    margin: 5px;
+    font-size: 15px;
+    color: #080808;
+}
+.rbc-off-range .rbc-button-link{
+    color: #201d1d;
+}
+.rbc-now .rbc-button-link{
+    background-color: #080808;
+    color: #ffffff;
+    border-radius: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin: 5px;
+    font-size: 16px;
+}
+.rbc-time-content,.rbc-time-content > .rbc-day-slot,.rbc-timeslot-group, .rbc-time-slot{
+    color: #080808;
+    border-color: #b0b0b036;
+}
+.rbc-day-slot .rbc-time-slot{
+    border-top: 1px solid #080808 ;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 992px) {
+    .tela {
+        flex-direction: column; /* Empilha a barra de ferramentas (toolbar) e o calendário */
+    }
+
+    .toolbar {
+        height: auto; /* Altura ajustável ao conteúdo */
+        width: 100%; /* Largura total */
+        border-right: none;
+        border-bottom: 1px solid #000000;
+        /* Limite de altura e rolagem para o toolbar no topo */
+        max-height: 80vh; 
+        overflow-y: auto;
+    }
+
+    .calendario {
+        height: 70vh; /* Altura menor para dar espaço ao toolbar */
+        width: 100%; /* Largura total */
+        overflow-x: auto; /* Mantém a rolagem horizontal */
+    }
+    
+    /* Ajustes internos no toolbar para telas menores */
+    .toolbar .p-4 {
+        padding: 1rem !important;
+    }
+
+    /* Ajuste para o filtro para evitar que tome muito espaço vertical */
+    .toolbar .p-3.rounded.border.mt-3 {
+        padding: 0.75rem !important;
+        margin-top: 0.75rem !important;
+    }
+    .toolbar .ps-1 {
+        max-height: 20vh !important; /* Limita a altura da lista de filtros */
+    }
+
+    /* Redefinir a altura do calendário BigCalendar para se ajustar à nova altura do container */
+    .rbc-calendar {
+        height: 100%;
+    }
+}
+
+/*responsivo pra celular */
+@media (max-width: 768px) {
+    .calendario {
+        height: 60vh; 
+    }
+
+    /* Ajustar layout da barra de ferramentas personalizada do calendário */
+    .toolbar-container {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-top: 5px;
+    }
+
+    .mesAno {
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+        width: 100%;
+        text-align: center;
+        padding-right: 0;
+    }
+
+    .dirtop {
+        width: 100%;
+        padding-right: 0;
+        justify-content: space-between;
+        margin-bottom: 5px;
+    }
+    
+    /* Ocultar o dropdown de views no toolbar personalizado em telas menores */
+    .dropdown {
+        display: none;
+    }
+    
+    .dirtop .toolbar-navegation {
+        margin-left: 0;
+        justify-content: center;
+        width: 100%;
+    }
+
+    /* Ocultar os botões de 'Semana' e 'Dia' na barra de ferramentas nativa do Big Calendar
+       (apenas se estiver usando a barra nativa, mas o CustomTollbar está em uso) */
+    .rbc-toolbar .rbc-btn-group {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    /* Ajustes nos botões do CustomToolbar para ficarem melhores em mobile */
+    .btn-prev, .btn-next {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+}
