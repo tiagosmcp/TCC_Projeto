@@ -1,4 +1,3 @@
-import userEvent from '@testing-library/user-event';
 import React, {useState} from 'react'
 import { Button, Form, Row, Col, Collapse } from 'react-bootstrap'
 
@@ -27,8 +26,8 @@ function Adicionar({onAdicionar}){
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        //verifica se tem titulo start e end
-        if(novoEvento.title && novoEvento.start && novoEvento.end){
+        //verifica se tem titulo start e end E O LOCAL (pois agora é obrigatório)
+        if(novoEvento.title && novoEvento.start && novoEvento.end && novoEvento.local){
             const startDate = new Date(novoEvento.start);
             const endDate = new Date(novoEvento.end);
 
@@ -80,42 +79,23 @@ function Adicionar({onAdicionar}){
                             </Form.Group>
                         </Col>
                     </Row>
-                    <Collapse in={expanded}>
-                        <div>
-                            <div>
-                                <Form.Group controlId='formBasicLocal'>
-                                    <Form.Label>Local</Form.Label>
-                                    <Form.Control type='text' placeholder='Digite o Local' name='local' value={novoEvento.local} onChange={handleChange}/>
-                                </Form.Group>
-                            </div>
-                            <Row>
-                                <Col xs={3}>
-                                    <Form.Group controlId='formBasicColor'>
-                                        <Form.Label>Cor</Form.Label>
-                                        <Form.Control type='color' name='color' value={novoEvento.color} onChange={handleChange}/>
-                                    </Form.Group>    
-                                </Col>
-                                <Col xs={9}>
-                                    <Form.Group controlId='formBasicTipo'>
-                                        <Form.Label>Tipo</Form.Label>
-                                        <Form.Control type='text' placeholder='Digite o tipo' name='tipo' value={novoEvento.tipo} onChange={handleChange}/>
-                                    </Form.Group>    
-                                </Col>
-                            </Row>
-                        </div>
-                    </Collapse>
-                    <Button
-                        variant='primary'
-                        type='button'
-                        onClick={handleToggleExpanded}
-                        style={{marginTop:'10px', float:'right'}}>
-                            {expanded ? <i class="bi bi-chevron-double-up"></i>:<i class="bi bi-chevron-double-down"></i>}
-                    </Button>
+                    
+                    {/* NOVO: CAMPO LOCAL AGORA ESTÁ EM SUA PRÓPRIA ROW (SEMPRE VISÍVEL) */}
+                    <Row> 
+                        <Col xs={12}>
+                             <Form.Group controlId='formBasicLocal' className="mt-2"> {/* Adicionado mt-2 para espaçamento */}
+                                <Form.Label>Local</Form.Label>
+                                <Form.Control type='text' placeholder='Digite o Local' name='local' value={novoEvento.local} onChange={handleChange}/>
+                            </Form.Group>
+                        </Col>
+                    </Row>
+                    
+                    
                     <Button
                         variant='success'
                         type='submit'
                         style={{marginTop:'10px', marginRight: '10px'}}
-                        disabled={!novoEvento.title || !novoEvento.start || !novoEvento.end }>
+                        disabled={!novoEvento.title || !novoEvento.start || !novoEvento.end || !novoEvento.local}>
                         Salvar
                     </Button>
                 </Form>
@@ -123,4 +103,4 @@ function Adicionar({onAdicionar}){
         </div>
     )
 }
-export default Adicionar
+export default Adicionar;

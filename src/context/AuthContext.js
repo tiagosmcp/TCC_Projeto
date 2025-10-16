@@ -10,10 +10,16 @@ export const AuthContextProvider = ({ children }) => {
   );
 
   const login = async (inputs) => {
-    // Endpoint de login criado na seção 2.2
-    const res = await axios.post("http://localhost:8800/auth/login", inputs); 
-    // res.data contém: {id, nome, cor, tipo}
+    // 1. A requisição vai para /auth/login
+    // 2. O proxy (package.json) vê isso e envia para http://localhost:8800/auth/login
+    const res = await axios.post("/auth/login", inputs) 
+    
+    // Armazena os dados do usuário logado (id, nome, cor, tipo)
     setCurrentUser(res.data);
+    
+    // Armazena no Local Storage para persistência (se for a implementação que você está usando)
+    localStorage.setItem("user", JSON.stringify(res.data));
+    
     return res.data;
   };
 

@@ -214,7 +214,7 @@ function Calendario() {
                 </div>
                 
                 {/* O formulário Adicionar SÓ aparece se o Admin estiver logado */}
-                {isLoggedIn && <Adicionar onAdicionar={handleAdicionar} />} 
+                {isLoggedIn && <Adicionar onAdicionar={handleAdicionar} programacoes={eventos} />} 
 
                 {/* Filtro visível para todos (Usuário Comum e Admin) */}
                 <FiltroProg programacoes={eventos} SelecionarProgramacoes={handleSetSelecionarProg} />
