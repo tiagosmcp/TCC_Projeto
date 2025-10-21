@@ -216,23 +216,30 @@ body.has-fixed-header {
 /* Hero */
 .hero {
   position: relative;
-  height: 70vh;
-  display: flex; align-items: center; justify-content: center;
+  height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;     
 }
 
 .imagem-fundo, .hero-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;             
   width: 100%;
   height: 100%;
-  margin-top: 10px;
+  margin: 100;            
 }
 
-.imagem-fundo { 
-  object-fit: cover;
-  z-index: 1; 
+.imagem-fundo {
+  width: 100%;
+  height: 100%;
+  object-fit: fill; 
+  object-position: center;
+  z-index: 1;
 }
+
+
 .hero-overlay { 
   background: rgba(0,0,0,0.4);
   z-index: 2;

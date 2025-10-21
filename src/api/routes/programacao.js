@@ -6,6 +6,7 @@ const router = express.Router();
 router.get("/", getProgramacoes);
 router.post("/", addProgramacao);
 router.put("/:id", updateProgramacao);
-router.delete("/:id", deleteProgramacao);
+router.delete("/delete/:id", deleteProgramacao);
+
 
 export default router;

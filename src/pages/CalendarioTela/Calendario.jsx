@@ -139,7 +139,7 @@ function Calendario() {
         try {
             // DELETE com corpo no axios usa a opção { data: payload }
             const payload = { id_usuario_logado: currentUser.id }; 
-            await axios.delete(`${API_URL}/${eventId}`, { data: payload }); 
+            await axios.delete(`${API_URL}/delete/${eventId}`, { data: payload }); 
             fetchEvents();
         } catch (error) {
             alert(error.response?.data || "Erro de permissão ou conexão ao deletar.");
