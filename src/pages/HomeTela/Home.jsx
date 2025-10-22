@@ -96,7 +96,7 @@ function Home() {
                   <h3>Localização</h3>
                   <div>
                     <p className="direita-text">
-                      Estamos localizados na Rua Agusto Branquinho, nº 608, no bairro Niterói, em Carmo do Paranaíba. 
+                      Estamos localizados na Rua Augusto Branquinho, nº 608, no bairro Niterói, em Carmo do Paranaíba. 
                       Nossa igreja está em uma região de fácil acesso, próxima a pontos de referência da cidade.
                       Venha nos visitar e conhecer nosso espaço, participar de nossos cultos e atividades!
                     </p>
