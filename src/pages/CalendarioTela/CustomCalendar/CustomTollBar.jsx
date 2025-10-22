@@ -12,8 +12,6 @@ const CustomTollbar = ({label, onView, onNavigate, views}) =>{
     // Função utilitária para traduzir o nome da view
     const translateView = (view) => viewTranslations[view] || view;
 
-    // Inicializa o estado com a tradução de 'month', assumindo ser a visualização padrão.
-    // Se a lista de views estiver vazia, usa 'month' como fallback.
     const initialView = views.includes('month') ? 'month' : views[0] || 'month';
     const [itemText, setItemText] = useState(translateView(initialView));
 

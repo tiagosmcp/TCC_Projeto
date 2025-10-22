@@ -17,7 +17,6 @@ export const getProgramacoes = (req, res) => {
         if (err) return res.status(500).json(err);
         const programacoes = data.map(prog => ({
             ...prog,
-            // ATENÇÃO: A cor e o tipo (status) agora virão do DB da Programação se não houver JOIN
             color: prog.cor, 
             tipo: prog.status,
             start: new Date(prog.start),
@@ -54,8 +53,8 @@ export const addProgramacao = (req, res) => {
             start,
             end,
             local,
-            tipo, // O campo STATUS na tabela será o TIPO de programação (UCP, UPA...)
-            cor,  // O campo COR na tabela será a cor do Admin
+            tipo, 
+            cor,  
             id_usuario_logado,
         ];
 
@@ -121,7 +120,6 @@ export const updateProgramacao = (req, res) => {
 
 // DELETE (SÓ pode deletar se for o criador)
 export const deleteProgramacao = (req, res) => {
-    // id_usuario_logado vem no body da requisição DELETE (ver Frontend)
     const { id_usuario_logado } = req.body; 
     const programacaoId = req.params.id;
     

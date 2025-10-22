@@ -2,19 +2,15 @@ import React, { useState, useEffect } from "react";
 import { Modal, Button, Form, Collapse, Alert } from "react-bootstrap";
 import moment from "moment";
 
-// Adicionamos as novas props: canEditOrDelete e isLoggedIn
 const EventModal = ({ evento, onClose, onDelete, onUpdate, canEditOrDelete, isLoggedIn }) => {
-    // Inicializa o estado com os dados do evento. Usaremos 'editedEvent.status' e 'editedEvent.cor' para salvar na API
     const [editedEvent, setEditedEvent] = useState({
         ...evento,
-        // Garante que o estado interno usa as chaves corretas que vêm da API (cor, status, id_usuario)
         tipo: evento.tipo || evento.status, 
         color: evento.color || evento.cor,
     });
     const [isEditing, setIsEditing] = useState(false); // Novo estado para controlar o modo de edição
     const [collapsed, setCollapsed] = useState(true);
 
-    // Efeito para sincronizar os dados editáveis se o evento mudar (caso a permissão mude)
     useEffect(() => {
         setEditedEvent({
             ...evento,
@@ -57,7 +53,7 @@ const EventModal = ({ evento, onClose, onDelete, onUpdate, canEditOrDelete, isLo
     // Função de ajuste de fuso horário (necessário para o input datetime-local)
     const ajustDate = (date) => {
         if (!date) return '';
-        // Converte para ISO string e remove os segundos/millis e o Z (UTC)
+        // Converte para ISO string ignora os segundos
         return moment(date).format('YYYY-MM-DDTHH:mm');
     };
 
@@ -102,7 +98,7 @@ const EventModal = ({ evento, onClose, onDelete, onUpdate, canEditOrDelete, isLo
                             name="title" 
                             value={editedEvent.title} 
                             onChange={handleInputChange} 
-                            disabled={!canEditOrDelete} // Desabilita se não puder editar
+                            disabled={!canEditOrDelete} 
                         />
                     </Form.Group>
 
@@ -117,7 +113,7 @@ const EventModal = ({ evento, onClose, onDelete, onUpdate, canEditOrDelete, isLo
                         />
                     </Form.Group>
 
-                    {/* Detalhes de Data e Cor (Sempre visíveis se não estiver recolhido ou se puder editar) */}
+                    
                     <Collapse in={!collapsed || canEditOrDelete}>
                         <div>
                             <Form.Group controlId="formInicio" className="mb-3">
@@ -148,8 +144,6 @@ const EventModal = ({ evento, onClose, onDelete, onUpdate, canEditOrDelete, isLo
                                     type="color" 
                                     name="color" 
                                     value={editedEvent.color} 
-                                    // A cor e o tipo são injetados pelo backend e não devem ser alterados aqui, 
-                                    // pois isso violaria a regra do criador. Apenas exibimos a cor atual.
                                     disabled 
                                 />
                             </Form.Group>

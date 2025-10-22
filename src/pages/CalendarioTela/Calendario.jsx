@@ -13,7 +13,7 @@ import FiltroProg from "./Filtro/FiltroProg";
 import { Link } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import axios from 'axios';
-import { AuthContext } from "../../context/AuthContext"; // Importa o contexto de autenticação
+import { AuthContext } from "../../context/AuthContext"; 
 
 // URL base da API de programação
 const API_URL = "http://localhost:8800/programacao";
@@ -53,7 +53,6 @@ function Calendario() {
             setEventosFiltrados(mappedEvents);
         } catch (error) {
             console.error("Erro ao buscar eventos:", error);
-            // Implementar um alerta visual para o usuário, se desejar
         }
     }, []);
 
@@ -74,7 +73,7 @@ function Calendario() {
         // Regra de Permissão: SÓ se for o criador (checa no frontend e backend)
         if (!currentUser || event.id_usuario !== currentUser.id) {
             alert("Você só pode mover/redimensionar programações que você mesmo criou.");
-            fetchEvents(); // Reverte a posição visual puxando os dados do DB
+            fetchEvents(); 
             return;
         }
 
@@ -129,6 +128,7 @@ function Calendario() {
 
     // Deletar evento (Delete na API)
     const handleEventDelete = async (eventId) => {
+        console.log("ID recebido para deletar:", eventId);
         // Regra de Permissão: SÓ se estiver logado (e a API checa se é o criador)
         if (!currentUser) {
             alert("Apenas Admins logados podem deletar programações.");
@@ -137,9 +137,8 @@ function Calendario() {
         }
         
         try {
-            // DELETE com corpo no axios usa a opção { data: payload }
             const payload = { id_usuario_logado: currentUser.id }; 
-            await axios.delete(`${API_URL}/delete/${eventId}`, { data: payload }); 
+            await axios.delete(`${API_URL}/${eventId}`, { data: payload }); 
             fetchEvents();
         } catch (error) {
             alert(error.response?.data || "Erro de permissão ou conexão ao deletar.");
@@ -174,10 +173,9 @@ function Calendario() {
         setEventoSelecionado(null);
     };
 
-    // Filtrar eventos (Mantém a lógica de filtro)
+    // Filtrar eventos 
     const handleSetSelecionarProg = (progSelecionadas) => setEventosFiltrados(progSelecionadas);
 
-    // Variáveis auxiliares para o render
     const isLoggedIn = !!currentUser;
     // Checa se o evento selecionado é o do usuário logado (Regra: CRUD Próprio)
     const canModifyEvent = eventoSelecionado && currentUser && eventoSelecionado.id_usuario === currentUser.id;
@@ -205,7 +203,7 @@ function Calendario() {
                         </>
                     ) : (
                         <>
-                            <p style={{ fontWeight: 'bold' }}>Acesso de Administrador</p>
+                            <p style={{ fontWeight: 'bold' }}>Acesso exclusivo para Administradores</p>
                             <Link to="/login" style={{ textDecoration: 'none' }}>
                                 <button className="btn btn-success w-100 mt-2">Fazer Login</button>
                             </Link>
@@ -214,9 +212,12 @@ function Calendario() {
                 </div>
                 
                 {/* O formulário Adicionar SÓ aparece se o Admin estiver logado */}
-                {isLoggedIn && <Adicionar onAdicionar={handleAdicionar} programacoes={eventos} />} 
-
-                {/* Filtro visível para todos (Usuário Comum e Admin) */}
+                {isLoggedIn && (
+                    <Adicionar 
+                        onAdicionar={handleAdicionar} 
+                        programacoes={eventos} // <-- PASSANDO A LISTA PARA CHECAGEM DE CONFLITO
+                    /> 
+                )}
                 <FiltroProg programacoes={eventos} SelecionarProgramacoes={handleSetSelecionarProg} />
             </div>
 
@@ -226,7 +227,6 @@ function Calendario() {
                     defaultView="month"
                     events={eventosFiltrados}
                     localizer={localizer}
-                    // Condiciona a funcionalidade de redimensionar e arrastar
                     resizable={canModifyEvent} 
                     draggableAccessor={(event) => isLoggedIn && event.id_usuario === currentUser?.id} 
                     onEventDrop={moverEventos}
@@ -245,7 +245,7 @@ function Calendario() {
                 <EventModal
                     evento={eventoSelecionado}
                     onClose={handleEventClose}
-                    onDelete={handleEventDelete}
+                    onDelete={() => handleEventDelete(eventoSelecionado.id)}
                     onUpdate={handleEventUpdate}
                     canEditOrDelete={canModifyEvent} // Permissão para Editar/Deletar
                     isLoggedIn={isLoggedIn} // Se estiver logado (para visualização de detalhes)

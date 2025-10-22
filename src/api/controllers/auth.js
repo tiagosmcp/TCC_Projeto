@@ -17,13 +17,10 @@ export const login = (req, res) => {
 
         const user = data[0];
 
-        // 2. Compara a senha (aqui usamos a 'senha' da requisição)
         if (user.senha !== senha) {
             return res.status(401).json("Senha incorreta.");
         }
 
-        // 3. Sucesso: Retorna os dados do usuário, omitindo a senha com um placeholder (senha: _)
-        // Isso resolve o erro de inicialização/escopo.
         const { senha: _, ...other } = user; 
         
         return res.status(200).json(other);

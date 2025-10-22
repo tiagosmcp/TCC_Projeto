@@ -1,7 +1,9 @@
 import React, {useState} from 'react'
 import { Button, Form, Row, Col, Collapse } from 'react-bootstrap'
+import moment from "moment"; 
 
-function Adicionar({onAdicionar}){
+// Recebe a lista de programações existentes como prop
+function Adicionar({onAdicionar, programacoes}){ 
     const [novoEvento, setNovoEvento] = useState({
         title: '',
         start: '',
@@ -17,40 +19,84 @@ function Adicionar({onAdicionar}){
         const {name, value} = e.target;
         setNovoEvento({...novoEvento, [name]:value});
     }
+    
+    // Função para resetar o formulário
+    const resetForm = () => {
+        setNovoEvento({
+            title: '',
+            start: '',
+            end: '',
+            color: '',
+            tipo: '',
+            local: '',
+        });
+    };
 
-    //função que expande pra adicionar uma programação
-    const handleToggleExpanded = (e) => {
-        e.stopPropagation();
-        setExpanded(!expanded)
+    // Função para checar se já existe uma programação com a mesma data/hora de início e local
+    const checkForConflict = (newStartDate, newLocal) => {
+        // Formata a data/hora para comparação exata (ignorando segundos)
+        const compareTime = moment(newStartDate).format('YYYY-MM-DD HH:mm');
+        
+        const conflict = programacoes.find(prog => {
+            
+            // Compara o local (case-insensitive)
+            const isSameLocal = prog.local && prog.local.toLowerCase() === newLocal.toLowerCase();
+            
+            // Compara a data e hora de início exata
+            const progCompareTime = moment(prog.start).format('YYYY-MM-DD HH:mm');
+
+            return isSameLocal && (progCompareTime === compareTime);
+        });
+        
+        return !!conflict;
     }
-
+    
     const handleSubmit = (e) => {
         e.preventDefault();
-        //verifica se tem titulo start e end E O LOCAL (pois agora é obrigatório)
-        if(novoEvento.title && novoEvento.start && novoEvento.end && novoEvento.local){
-            const startDate = new Date(novoEvento.start);
-            const endDate = new Date(novoEvento.end);
+        
+        const { title, start, end, local } = novoEvento;
+        
+        // 1. Validação Básica (garante que os campos obrigatórios estão preenchidos)
+        if (!title || !start || !end || !local){
+            alert('Por favor, preencha todos os campos obrigatórios (Título, Início, Término e Local).');
+            return;
+        }
 
-            //verifica se a data de inicio é menor que a de fim
-            if(startDate >= endDate){
-                alert('A data de início deve ser anterior à data de término');
-                return;
-            }
+        const startDate = new Date(start);
+        const endDate = new Date(end);
 
-            onAdicionar({...novoEvento, 
+        if(startDate >= endDate){
+            alert('A data de início deve ser anterior à data de término');
+            return;
+        }
+        
+        // 2. Checagem de Conflito das programações
+        const hasConflict = checkForConflict(startDate, local);
+
+        const addEvent = () => {
+            onAdicionar({
+                ...novoEvento, 
                 start: startDate,
                 end: endDate,
             });
-            setNovoEvento({
-                title: '',
-                start: '',
-                end: '',
-                color: '',
-                tipo: '',
-                local: '',
-            })
+            resetForm();
+        }
+
+        if (hasConflict) {
+            //  Alerta de Confirmação com janela nativa do navegador
+            const isConfirmed = window.confirm(
+                "Já existem programações com essas especificações (mesma data/hora e local).\n" + 
+                "Deseja adicionar a programação mesmo assim?"
+            );
+
+            if (isConfirmed) {
+                addEvent(); // Adiciona se confirmado
+            }
+            // Se clicar em Cancelar, ele permanece no formulário.
+            return; 
         }
         
+        addEvent();
     }
 
     return(
@@ -80,17 +126,14 @@ function Adicionar({onAdicionar}){
                         </Col>
                     </Row>
                     
-                    {/* NOVO: CAMPO LOCAL AGORA ESTÁ EM SUA PRÓPRIA ROW (SEMPRE VISÍVEL) */}
                     <Row> 
                         <Col xs={12}>
-                             <Form.Group controlId='formBasicLocal' className="mt-2"> {/* Adicionado mt-2 para espaçamento */}
+                             <Form.Group controlId='formBasicLocal' className="mt-2">
                                 <Form.Label>Local</Form.Label>
                                 <Form.Control type='text' placeholder='Digite o Local' name='local' value={novoEvento.local} onChange={handleChange}/>
                             </Form.Group>
                         </Col>
                     </Row>
-                    
-                    
                     <Button
                         variant='success'
                         type='submit'
@@ -103,4 +146,5 @@ function Adicionar({onAdicionar}){
         </div>
     )
 }
-export default Adicionar;
+
+export default Adicionar

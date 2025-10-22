@@ -48,7 +48,7 @@ body.has-fixed-header {
   align-items: center;
   width: 100%;
   max-width: 1200px;
-  flex-wrap: wrap; /* quebra se necessário */
+  flex-wrap: wrap; 
   gap: 10px;
 }
 
