@@ -7,10 +7,9 @@ const app = express()
 
 app.use(express.json())
 
-// Configuração de CORS para permitir especificamente o frontend na porta 3000
+// Configuração de CORS para permitir o front na vercel
 app.use(cors({
-    // Permite a origem exata do seu frontend React
-    origin: 'http://localhost:3000', 
+    origin: 'https://ipbalvorada.vercel.app/', 
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true, // Necessário se você usar cookies/sessões (boas práticas)
 }));

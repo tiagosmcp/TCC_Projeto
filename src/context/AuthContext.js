@@ -11,8 +11,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const login = async (inputs) => {
     // 1. A requisição vai para /auth/login
-    // 2. O proxy (package.json) vê isso e envia para http://localhost:8800/auth/login
-    const res = await axios.post("/auth/login", inputs) 
+    const res = await axios.post("https://tcc-projeto.onrender.com/auth/login", inputs) 
     
     // Armazena os dados do usuário logado (id, nome, cor, tipo)
     setCurrentUser(res.data);

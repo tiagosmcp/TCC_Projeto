@@ -16,7 +16,7 @@ import axios from 'axios';
 import { AuthContext } from "../../context/AuthContext"; 
 
 // URL base da API de programação
-const API_URL = "http://localhost:8800/programacao";
+const API_URL = "https://tcc-projeto.onrender.com/programacao";
 
 // Configuração do Drag and Drop
 const DragAndDropCalendar = withDragAndDrop(Calendar);
