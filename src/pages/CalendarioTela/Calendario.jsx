@@ -129,7 +129,6 @@ function Calendario() {
     // Deletar evento (Delete na API)
     const handleEventDelete = async (eventId) => {
         console.log("ID recebido para deletar:", eventId);
-        // Regra de Permissão: SÓ se estiver logado (e a API checa se é o criador)
         if (!currentUser) {
             alert("Apenas Admins logados podem deletar programações.");
             setEventoSelecionado(null);
