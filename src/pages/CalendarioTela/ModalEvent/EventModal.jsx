@@ -138,15 +138,7 @@ const EventModal = ({ evento, onClose, onDelete, onUpdate, canEditOrDelete, isLo
                                 />
                             </Form.Group>
 
-                            <Form.Group controlId="formColor" className="mb-3">
-                                <Form.Label>Cor</Form.Label>
-                                <Form.Control 
-                                    type="color" 
-                                    name="color" 
-                                    value={editedEvent.color} 
-                                    disabled 
-                                />
-                            </Form.Group>
+                            
                         </div>
                     </Collapse>
                 </Form>
