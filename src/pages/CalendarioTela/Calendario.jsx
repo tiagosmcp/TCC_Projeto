@@ -95,7 +95,7 @@ function Calendario() {
         }
     };
 
-    // Abrir modal de evento
+    
     const handleEventClick = (evento) => setEventoSelecionado(evento);
 
     // Fechar modal de evento
