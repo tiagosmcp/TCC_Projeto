@@ -1,14 +1,14 @@
 import mysql from "mysql2";
 
 export const db = mysql.createConnection({
-    host: "127.0.0.1",
-    user: "root",
-    password: "root",
-    database: "ipb_alvorada",
+  host: "mainline.proxy.rlwy.net", 
+  port: 28212,                  
+  user: "root",                    
+  password: "ncmnVtQIjwvMZVaKitUrBlxcNUtsgykf",    
+  database: "ipb_alvorada",           
 });
 
-// ... (restante do código)
-// NOVO: Adiciona a verificação de erro para garantir que a conexão funcione
+
 db.connect((err) => {
     if (err) {
         console.error("❌ ERRO AO CONECTAR AO MYSQL: ", err.stack);
