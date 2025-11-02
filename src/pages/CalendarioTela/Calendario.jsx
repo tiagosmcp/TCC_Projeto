@@ -80,8 +80,8 @@ function Calendario() {
         const updatedEvent = {
             ...event,
             // Formato para o MySQL
-            start: moment(start).format('YYYY-MM-DD HH:mm:ss'), 
-            end: moment(end).format('YYYY-MM-DD HH:mm:ss'),     
+            start: moment(start).utc().format('YYYY-MM-DD HH:mm:ss'), 
+            end: moment(end).utc().format('YYYY-MM-DD HH:mm:ss'),    
             // ID para verificação de permissão no Backend, essencial para o PUT/DELETE
             id_usuario_logado: currentUser.id, 
         };
@@ -113,8 +113,8 @@ function Calendario() {
             // Prepara o payload: O Backend injeta a COR e o TIPO do Admin
             const payload = {
                 title: novoEvento.title,
-                start: moment(novoEvento.start).format('YYYY-MM-DD HH:mm:ss'),
-                end: moment(novoEvento.end).format('YYYY-MM-DD HH:mm:ss'),
+                start: moment(novoEvento.start).utc().format('YYYY-MM-DD HH:mm:ss'),
+                end: moment(novoEvento.end).utc().format('YYYY-MM-DD HH:mm:ss'),
                 local: novoEvento.local,
                 id_usuario_logado: currentUser.id, // ID para o Backend injetar atributos
             };
@@ -158,8 +158,8 @@ function Calendario() {
             // Prepara o payload. O backend irá usar o id_usuario_logado para re-injetar a cor e tipo corretos.
             const payload = {
                 title: updatedEvent.title,
-                start: moment(updatedEvent.start).format('YYYY-MM-DD HH:mm:ss'),
-                end: moment(updatedEvent.end).format('YYYY-MM-DD HH:mm:ss'),
+                start: moment(updatedEvent.start).utc().format('YYYY-MM-DD HH:mm:ss'),
+                end: moment(updatedEvent.end).utc().format('YYYY-MM-DD HH:mm:ss'),
                 local: updatedEvent.local,
                 id_usuario_logado: currentUser.id, 
             };
