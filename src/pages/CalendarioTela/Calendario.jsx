@@ -27,6 +27,22 @@ moment.locale("pt-br");
 // Localizer do React Big Calendar
 const localizer = momentLocalizer(moment);
 
+// OBJETO DE MENSAGENS PARA TRADUÇÃO (INCLUINDO A CORREÇÃO PARA "+X MAIS")
+const messages = {
+    allDay: 'Dia todo',
+    previous: 'Anterior',
+    next: 'Próximo',
+    today: 'Hoje',
+    month: 'Mês',
+    week: 'Semana',
+    day: 'Dia',
+    agenda: 'Agenda',
+    date: 'Data',
+    time: 'Hora',
+    event: 'Evento',
+    showMore: total => `+${total} programações`, 
+};
+
 function Calendario() {
     const { currentUser, logout } = useContext(AuthContext); 
     const [eventos, setEventos] = useState([]); 
@@ -237,6 +253,7 @@ function Calendario() {
                     }}
                     className="calendar"
                     views={["month", "week", "day"]}
+                    messages={messages}
                 />
             </div>
 
@@ -247,7 +264,7 @@ function Calendario() {
                     onDelete={() => handleEventDelete(eventoSelecionado.id)}
                     onUpdate={handleEventUpdate}
                     canEditOrDelete={canModifyEvent} // Permissão para Editar/Deletar
-                    isLoggedIn={isLoggedIn} // Se estiver logado (para visualização de detalhes)
+                    isLoggedIn={isLoggedIn} // Se estiver logado 
                 />
             )}
         </div>

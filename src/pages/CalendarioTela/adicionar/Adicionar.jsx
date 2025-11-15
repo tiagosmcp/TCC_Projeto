@@ -56,7 +56,7 @@ function Adicionar({onAdicionar, programacoes}){
         
         const { title, start, end, local } = novoEvento;
         
-        // 1. Validação Básica (garante que os campos obrigatórios estão preenchidos)
+        // garante que os campos obrigatórios estão preenchido
         if (!title || !start || !end || !local){
             alert('Por favor, preencha todos os campos obrigatórios (Título, Início, Término e Local).');
             return;
@@ -70,7 +70,7 @@ function Adicionar({onAdicionar, programacoes}){
             return;
         }
         
-        // 2. Checagem de Conflito das programações
+        // Checagem de Conflito das programações
         const hasConflict = checkForConflict(startDate, local);
 
         const addEvent = () => {
@@ -83,7 +83,7 @@ function Adicionar({onAdicionar, programacoes}){
         }
 
         if (hasConflict) {
-            //  Alerta de Confirmação com janela nativa do navegador
+            //  Alerta de Confirmação
             const isConfirmed = window.confirm(
                 "Já existem programações com essas especificações (mesma data/hora e local).\n" + 
                 "Deseja adicionar a programação mesmo assim?"
