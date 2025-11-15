@@ -89,7 +89,7 @@ body.has-fixed-header {
   transform: translateY(-2px) scale(1.05);
 }
 
-/* --- RESPONSIVO --- */
+/* --- RESPONSIVO DO HEADER--- */
 @media (max-width: 668px) {
   .header {
     padding: 1rem;
@@ -269,20 +269,6 @@ body.has-fixed-header {
   .meio { 
     padding: 4rem 0;
     background: #f8f9fa;
-  }
-
-  @media (max-width: 993px) {
-   .meio .container {
-    flex-direction: column;
-    text-align: center;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .meio .container {
-      flex-direction: column;
-      text-align: center;
-    }
   }
 
   .esquerda-grid { 
@@ -483,4 +469,119 @@ body.has-fixed-header {
   text-align: center;
   font-size: 0.75rem;
   opacity: 0.8;
+}
+
+/* NOVAS REGRAS DE RESPONSIVIDADE PARA CONTEÚDO */
+@media (max-width: 992px) {
+  
+  /* Layout: Força todas as seções de conteúdo para coluna */
+  .esquerda-grid,
+  .direita-grid,
+  .sociedades-grid {
+    display: flex; 
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 40px; 
+  }
+  
+  /* Reset o grid-template-areas para o modo flex column padrão */
+  .sociedades-grid.reverse {
+    /* No mobile, queremos a ordem padrão (Imagem/Mapa, depois o Texto) */
+    flex-direction: column; 
+    grid-template-areas: none; 
+  }
+  
+
+  /* História (Imagem do lado esquerdo no desktop) */
+  .esquerda-grid .esquerda-content {
+      order: 1; 
+  }
+  .esquerda-grid .historia-image-container {
+      order: 0; 
+      max-width: 80%;
+      margin: 0 auto 20px auto;
+  }
+  
+  /* Localização (Mapa do lado esquerdo no desktop) */
+  .direita-grid .bloco-texto-direita {
+      order: 1; 
+  }
+  .direita-grid .loc-maps-container {
+      order: 0; 
+      height: 300px;
+  }
+  
+  /* Sociedades*/
+  .sociedades-image-container {
+      order: 0;
+  }
+  .sociedades-content {
+      order: 1;
+  }
+  
+  /* Tipografia: Melhora a legibilidade */
+  .hero-title { font-size: 2.2rem; }
+  .hero-subtitle { font-size: 1rem; max-width: 90%; }
+  
+  .esquerda-content h3, .bloco-texto-direita h3, .sociedadetitulo {
+      font-size: 2rem; 
+      margin-top: 20px;
+  }
+  .sociedades-content h3 {
+      font-size: 1.5rem;
+  }
+
+  /* Alinhamento e indentação para melhor leitura */
+  .meio .esquerda-content, 
+  .meio .bloco-texto-direita, 
+  .meio .sociedades-content {
+    text-align: center; 
+  }
+
+  .esquerda-text,
+  .direita-text,
+  .sociedades-text { 
+    text-indent: 0 !important; /* Remove indentação de 30px */
+    text-align: left; /* Mantém o texto justificado/alinhado à esquerda para leitura de parágrafos */
+    padding: 0 1rem; /* Adiciona padding para o texto não encostar nas bordas */
+  }
+  
+  /* Footer: Stacks content */
+  .footer-container {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+  }
+  .footer-left, .footer-right {
+      max-width: 100%;
+      width: 100%;
+      margin-bottom: 1rem;
+  }
+  .social-icons {
+      justify-content: center;
+  }
+}
+
+/* Ajustes finos para telas menores */
+@media (max-width: 561px) {
+  .hero-title { font-size: 2rem; }
+  .esquerda-content h3, .bloco-texto-direita h3, .sociedadetitulo {
+      font-size: 1.8rem; 
+  }
+  .sociedades-content h3 {
+      font-size: 1.3rem;
+  }
+  
+  /* Garante padding interno para telas muito pequenas */
+  .container {
+      padding: 0 0.5rem;
+  }
+  
+  /* Ajusta o texto da seção Sociedades para telas muito pequenas */
+  .esquerda-text,
+  .direita-text,
+  .sociedades-text { 
+    padding: 0 0.5rem;
+    font-size: 0.95rem;
+  }
 }
