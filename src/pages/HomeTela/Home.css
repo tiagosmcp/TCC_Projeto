@@ -471,9 +471,7 @@ body.has-fixed-header {
   opacity: 0.8;
 }
 
-/* NOVAS REGRAS DE RESPONSIVIDADE PARA CONTEÚDO */
 @media (max-width: 992px) {
-  
   /* Layout: Força todas as seções de conteúdo para coluna */
   .esquerda-grid,
   .direita-grid,
@@ -561,8 +559,6 @@ body.has-fixed-header {
       justify-content: center;
   }
 }
-
-/* Ajustes finos para telas menores */
 @media (max-width: 561px) {
   .hero-title { font-size: 2rem; }
   .esquerda-content h3, .bloco-texto-direita h3, .sociedadetitulo {

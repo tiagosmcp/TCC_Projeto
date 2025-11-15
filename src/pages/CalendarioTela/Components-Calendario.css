@@ -165,24 +165,52 @@
     border-top: 1px solid #080808 ;
 }
 
-/* --- RESPONSIVIDADE --- */
+/* Oculta os botões de visualização para mobile em telas grandes */
+.mobile-view-selector {
+    display: none;
+}
+
+/* Formata os botões de navegação e view para desktop/tablet */
+.btn-view {
+    /* Estilo para os botões de Mês/Semana/Dia no modo mobile/tablet */
+    background-color: transparent !important; 
+    border: none !important;
+    color: #ffffff; /* Cor branca para contraste com a barra escura */
+    font-weight: 600;
+    transition: 0.2s;
+}
+.btn-view:hover {
+    color: #d4f1c5; /* Cor mais clara no hover */
+}
+.toolbar-view-buttons {
+    display: flex;
+    gap: 10px;
+    margin-right: 20px; /* Separa dos botões de navegação */
+}
+
+/* --- RESPONSIVIDADE MOBILE */
 @media (max-width: 992px) {
     .tela {
         flex-direction: column; /* Empilha a barra de ferramentas (toolbar) e o calendário */
     }
 
     .toolbar {
-        height: auto; /* Altura ajustável ao conteúdo */
+        height: auto; 
         width: 100%; /* Largura total */
         border-right: none;
         border-bottom: 1px solid #000000;
-        /* Limite de altura e rolagem para o toolbar no topo */
-        max-height: 80vh; 
+        /* Limite a altura da barra lateral para que o calendário tenha espaço */
+        max-height: 40vh; /* Ajustado para dar mais foco ao calendário */
         overflow-y: auto;
+    }
+    
+    /* Garante que o conteúdo da toolbar utilize bem o espaço e evite quebra de layout */
+    .toolbar > * {
+        max-width: 100%;
     }
 
     .calendario {
-        height: 70vh; /* Altura menor para dar espaço ao toolbar */
+        height: 60vh; /* O calendário ocupa o resto da tela */
         width: 100%; /* Largura total */
         overflow-x: auto; /* Mantém a rolagem horizontal */
     }
@@ -201,18 +229,6 @@
         max-height: 20vh !important; /* Limita a altura da lista de filtros */
     }
 
-    /* Redefinir a altura do calendário BigCalendar para se ajustar à nova altura do container */
-    .rbc-calendar {
-        height: 100%;
-    }
-}
-
-/*responsivo pra celular */
-@media (max-width: 768px) {
-    .calendario {
-        height: 60vh; 
-    }
-
     /* Ajustar layout da barra de ferramentas personalizada do calendário */
     .toolbar-container {
         flex-direction: column;
@@ -221,6 +237,8 @@
         padding-left: 10px;
         padding-right: 10px;
         margin-top: 5px;
+        text-align: center;
+        margin-bottom: 10px; /* Adiciona margem abaixo da barra de navegação */
     }
 
     .mesAno {
@@ -234,32 +252,70 @@
     .dirtop {
         width: 100%;
         padding-right: 0;
-        justify-content: space-between;
-        margin-bottom: 5px;
+        justify-content: center;
+        gap: 20px; /* Aumenta o espaçamento para o toque */
     }
     
-    /* Ocultar o dropdown de views no toolbar personalizado em telas menores */
-    .dropdown {
-        display: none;
+    /* Oculta o dropdown do CustomToolbar no mobile  */
+    .desktop-view-selector {
+        display: none !important;
+    }
+
+    /* Mostra os botões de visualização para mobile/tablet */
+    .mobile-view-selector {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        text-align: center;
     }
     
-    .dirtop .toolbar-navegation {
-        margin-left: 0;
+    .toolbar-navegation {
+        gap: 15px; /* Ajuste o espaçamento dos botões de navegação */
+        margin-left: 0 !important;
         justify-content: center;
         width: 100%;
     }
 
-    /* Ocultar os botões de 'Semana' e 'Dia' na barra de ferramentas nativa do Big Calendar
-       (apenas se estiver usando a barra nativa, mas o CustomTollbar está em uso) */
-    .rbc-toolbar .rbc-btn-group {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    
     /* Ajustes nos botões do CustomToolbar para ficarem melhores em mobile */
     .btn-prev, .btn-next {
         padding: 0.5rem;
-        font-size: 0.8rem;
+        font-size: 1rem; /* Aumenta o tamanho para melhor usabilidade (tocar) */
+    }
+    
+    .toolbar-view-buttons {
+        justify-content: center;
+        margin-right: 0;
+    }
+    
+    .btn-view {
+        font-size: 0.9rem;
+        padding: 6px 10px;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        border-radius: 4px;
+    }
+    
+
+    .rbc-toolbar-label {
+        font-size: 1.2rem; /* Mantém o mês e ano legível */
+    }
+    
+    .rbc-button-link {
+        font-size: 14px; /* Ajusta o tamanho do número do dia */
+    }
+    
+    /* Ocultar os cabeçalhos de Semana/Dia no modo Mês para economizar espaço e reduzir poluição visual */
+    .rbc-header {
+        font-size: 0.75rem; 
+        padding: 5px 0;
+    }
+}
+
+/* Ajustes para telas de celular (max-width: 768px ou menor) */
+@media (max-width: 768px) {
+    .calendario {
+        height: 60vh; 
+    }
+    .toolbar {
+        max-height: 45vh; 
     }
 }

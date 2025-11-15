@@ -21,13 +21,30 @@ const CustomTollbar = ({label, onView, onNavigate, views}) =>{
         onView(view);
         setItemText(translateView(view));
     };
+    
+    //  componente para renderizar botões de visualização
+    const renderViewButtons = () => (
+        <div className="toolbar-view-buttons">
+            {views.map((view, index) => (
+                <button
+                    key={index}
+                    className="btn btn-sm text-secondary btn-view"
+                    onClick={() => handleViewChange(view)}
+                >
+                    {translateView(view)}
+                </button>
+            ))}
+        </div>
+    );
 
     return(
             <div className="toolbar-container">
                 <h6 className='mesAno'>{label}</h6>
 
                 <div className="dirtop">
-                    <div className="dropdown">
+                    
+                    {/* DROP DOWN - VISÍVEL APENAS NO DESKTOP */}
+                    <div className="dropdown desktop-view-selector">
                         <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                             {itemText}
                         </button>
@@ -43,6 +60,11 @@ const CustomTollbar = ({label, onView, onNavigate, views}) =>{
                         </ul>
                     </div>
 
+                    {/* Botões de visualização para Mobile */}
+                    <div className="mobile-view-selector">
+                         {renderViewButtons()}
+                    </div>
+                    
                     <div className="toolbar-navegation">
                         <button className="btn btn-sm mr-2 text-secondary btn-prev" onClick={()=>onNavigate('PREV')}><i className='bi bi-caret-left'></i></button>
                         <button className="btn btn-sm mr-2 text-secondary btn-next" onClick={()=>onNavigate('NEXT')}><i className='bi bi-caret-right'></i></button>

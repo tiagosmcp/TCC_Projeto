@@ -11,7 +11,7 @@ const Login = () =>{
         nome: "", 
         senha: "", 
     });
-    // Adicionei o estado de erro, caso a API negue o acesso (401)
+    // Estado de erro, caso a API negue o acesso (401)
     const [err, setErr] = useState(null); 
     
     const navigate = useNavigate();
@@ -24,7 +24,7 @@ const Login = () =>{
 
     // Lida com o envio do formulário
     const handleSubmit = async (e) => {
-        e.preventDefault(); // <-- ESSENCIAL: Impede o recarregamento padrão do navegador
+        e.preventDefault(); // Impede o recarregamento padrão do navegador
         setErr(null); 
 
         try {

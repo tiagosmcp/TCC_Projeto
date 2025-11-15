@@ -23,13 +23,13 @@ const EventModal = ({ evento, onClose, onDelete, onUpdate, canEditOrDelete, isLo
         }
     }, [evento, canEditOrDelete]);
 
-    // Função de edição (só permite mudar Título e Local)
+    // Função de edição 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setEditedEvent({ ...editedEvent, [name]: value });
     }
 
-    // Funções de data (mantidas, mas só usadas no modo de edição)
+    // Funções de data 
     const handleStartDateChange = (e) => {
         const startDate = new Date(e.target.value);
         setEditedEvent(prev => ({ 
@@ -50,7 +50,7 @@ const EventModal = ({ evento, onClose, onDelete, onUpdate, canEditOrDelete, isLo
         }));
     }
 
-    // Função de ajuste de fuso horário (necessário para o input datetime-local)
+    // Função de ajuste de fuso horário 
     const ajustDate = (date) => {
         if (!date) return '';
         // Converte para ISO string ignora os segundos
