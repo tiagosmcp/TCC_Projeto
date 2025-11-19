@@ -20,4 +20,9 @@ app.options("*", cors());
 app.use("/programacao", programacaoRoutes);
 app.use("/auth", authRoutes);
 
+app.get("/healthz", (req, res) => {
+  res.status(200).send("OK");
+});
+
+
 app.listen(8800, () => console.log("Servidor rodando na porta 8800"));
