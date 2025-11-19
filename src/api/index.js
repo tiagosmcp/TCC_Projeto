@@ -19,7 +19,6 @@ app.use(
 app.options("*", cors());
 app.use("/programacao", programacaoRoutes);
 app.use("/auth", authRoutes);
-
 app.get("/healthz", (req, res) => {
   res.status(200).send("OK");
 });
