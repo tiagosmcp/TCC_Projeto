@@ -108,7 +108,6 @@ function Adicionar({onAdicionar, programacoes}){
                     <Form.Group controlId ="formBasicTitle">
                         <Form.Label>Nome da Programação</Form.Label>
                         <Form.Control type="text" placeholder="Digite o nome" name="title" value={novoEvento.title} onChange={handleChange}/>
-                        
                     </Form.Group>
 
                     <Row>

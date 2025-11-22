@@ -19,6 +19,8 @@ app.use(
 app.options("*", cors());
 app.use("/programacao", programacaoRoutes);
 app.use("/auth", authRoutes);
+
+//ficar pingando no back a cada 5min
 app.get("/healthz", (req, res) => {
   res.status(200).send("OK");
 });

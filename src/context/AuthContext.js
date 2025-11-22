@@ -10,13 +10,13 @@ export const AuthContextProvider = ({ children }) => {
   );
 
   const login = async (inputs) => {
-    // 1. A requisição vai para /auth/login
+    // requisição vai para /auth/login
     const res = await axios.post("https://tcc-projeto.onrender.com/auth/login", inputs) 
     
     // Armazena os dados do usuário logado (id, nome, cor, tipo)
     setCurrentUser(res.data);
     
-    // Armazena no Local Storage para persistência (se for a implementação que você está usando)
+    // Armazena no Local Storage para persistência 
     localStorage.setItem("user", JSON.stringify(res.data));
     
     return res.data;

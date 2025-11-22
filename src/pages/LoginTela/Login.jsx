@@ -47,10 +47,9 @@ const Login = () =>{
                 <div className="logoLogin">
                     <img src={ipbLogo} alt="Logo IPB"/>
                 </div>
-                {/* CORREÇÃO: Adicionando o onSubmit aqui */}
+                {/*  Adicionando o onSubmit aqui */}
                 <form onSubmit={handleSubmit}> 
                     <div className='input'>
-                        {/* CORREÇÃO: Binding para estado 'inputs' */}
                         <input 
                             type='text' 
                             placeholder='Usuário' 
@@ -62,7 +61,6 @@ const Login = () =>{
                         <FaUser className='icon'/>
                     </div>
                     <div className='input'>
-                        {/* CORREÇÃO: Binding para estado 'inputs' */}
                         <input 
                             type='password' 
                             placeholder='Senha' 
